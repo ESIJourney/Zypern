@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Rich Gold Gradients -->
+    <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff099" />
+      <stop offset="25%" stop-color="#eab308" />
+      <stop offset="50%" stop-color="#ca8a04" />
+      <stop offset="75%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#fef08a" />
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a16207" />
+      <stop offset="100%" stop-color="#713f12" />
+    </linearGradient>
+    <radialGradient id="compassGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(234, 179, 8, 0.35)" />
+      <stop offset="70%" stop-color="rgba(234, 179, 8, 0.05)" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+    <!-- Filter for subtle luxury drop shadow -->
+    <filter id="goldDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.8"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#eab308" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <circle cx="60" cy="60" r="56" fill="url(#compassGlow)" />
+
+  <!-- Outer Ring with Notches -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#goldLinear)" stroke-width="2" filter="url(#goldDrop)" />
+  <circle cx="60" cy="60" r="46" fill="none" stroke="url(#goldLinear)" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.85" />
+  <circle cx="60" cy="60" r="38" fill="rgba(8, 12, 20, 0.85)" stroke="url(#goldLinear)" stroke-width="1.2" />
+
+  <!-- Degree Tick Marks -->
+  <g stroke="url(#goldLinear)" stroke-width="1.2" opacity="0.9">
+    <line x1="60" y1="11" x2="60" y2="15" />
+    <line x1="60" y1="105" x2="60" y2="109" />
+    <line x1="11" y1="60" x2="15" y2="60" />
+    <line x1="105" y1="60" x2="109" y2="60" />
+    <line x1="25.3" y1="25.3" x2="28.2" y2="28.2" stroke-width="0.8" opacity="0.6"/>
+    <line x1="94.7" y1="25.3" x2="91.8" y2="28.2" stroke-width="0.8" opacity="0.6"/>
+    <line x1="25.3" y1="94.7" x2="28.2" y2="91.8" stroke-width="0.8" opacity="0.6"/>
+    <line x1="94.7" y1="94.7" x2="91.8" y2="91.8" stroke-width="0.8" opacity="0.6"/>
+  </g>
+
+  <!-- Cardinal Points Text (N, E, S, W) -->
+  <text x="60" y="24" text-anchor="middle" font-family="'Outfit', 'Inter', sans-serif" font-size="7" font-weight="900" fill="#fef08a" letter-spacing="1">N</text>
+  <text x="98" y="62.5" text-anchor="middle" font-family="'Outfit', 'Inter', sans-serif" font-size="6" font-weight="700" fill="#eab308" opacity="0.8">E</text>
+  <text x="60" y="100" text-anchor="middle" font-family="'Outfit', 'Inter', sans-serif" font-size="6" font-weight="700" fill="#eab308" opacity="0.8">S</text>
+  <text x="22" y="62.5" text-anchor="middle" font-family="'Outfit', 'Inter', sans-serif" font-size="6" font-weight="700" fill="#eab308" opacity="0.8">W</text>
+
+  <!-- 8-Point Compass Star -->
+  <!-- Secondary Points (NE, SE, SW, NW) -->
+  <g filter="url(#goldDrop)" opacity="0.75">
+    <polygon points="60,60 56,56 82,38 60,60" fill="url(#goldLinear)" />
+    <polygon points="60,60 56,56 38,38 60,60" fill="url(#goldDark)" />
+    <polygon points="60,60 64,64 82,82 60,60" fill="url(#goldDark)" />
+    <polygon points="60,60 56,64 38,82 60,60" fill="url(#goldLinear)" />
+  </g>
+
+  <!-- Primary Points (North, South, East, West) -->
+  <g filter="url(#goldDrop)">
+    <!-- North Pointer (Bright Gold / Exit Key) -->
+    <polygon points="60,60 55,60 60,18 60,60" fill="url(#goldLinear)" />
+    <polygon points="60,60 65,60 60,18 60,60" fill="url(#goldDark)" />
+
+    <!-- South Pointer -->
+    <polygon points="60,60 65,60 60,102 60,60" fill="url(#goldLinear)" />
+    <polygon points="60,60 55,60 60,102 60,60" fill="url(#goldDark)" />
+
+    <!-- East Pointer -->
+    <polygon points="60,60 60,55 102,60 60,60" fill="url(#goldLinear)" />
+    <polygon points="60,60 60,65 102,60 60,60" fill="url(#goldDark)" />
+
+    <!-- West Pointer -->
+    <polygon points="60,60 60,65 18,60 60,60" fill="url(#goldLinear)" />
+    <polygon points="60,60 60,55 18,60 60,60" fill="url(#goldDark)" />
+  </g>
+
+  <!-- Central Pivot Centerpiece -->
+  <circle cx="60" cy="60" r="6" fill="url(#goldLinear)" filter="url(#goldDrop)" />
+  <circle cx="60" cy="60" r="3.5" fill="#05070a" />
+  <circle cx="60" cy="60" r="1.8" fill="#fef08a" />
+</svg>
