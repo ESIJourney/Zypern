@@ -1,16 +1,16 @@
-# 🏝️ Exclusive Investor Journey Nordzypern
+# 🏝️ Exclusive Investor Due-Diligence Journey Nordzypern
 
-> **09. – 16. Oktober 2026 · Girne & Famagusta**  
-> Deine ganzheitliche Reise zur finanziellen, räumlichen, gesundheitlichen und geschäftlichen Freiheit.
+> **09. – 16. Oktober 2026 · Girne & Famagusta · Maximal 8 ausgewählte Teilnehmer**  
+> 8 Tage. Eine persönliche Standortstrategie. Direkter Zugang zu Experten, Projekten und Entscheidern. Nordzypern als Investor fundiert prüfen.
 
 ---
 
 ## 🌟 Highlights
-- **5-Sterne Luxusunterkunft:** Villa Adam in Esentepe/Girne direkt am Mittelmeer.
-- **5-Sterne Service:** Privater Butler- & täglicher Hausmädchen-Service (8h/Tag).
-- **Chauffeur & Mobilität:** Mietauto mit Chauffeur (BMW X1) & Flughafentransfers.
-- **Experten-Masterclasses:** Internationale Firmenstrukturierung, Zero-Tax-Strategien, Bank- & Vermögensschutz, Vor-Ort-Immobilienbesichtigungen.
-- **All-Inclusive:** 400 € Reisekasse, Mahlzeiten & Programm inklusive.
+- **Luxusvilla auf 5-Sterne-Niveau:** Villa Adam in Esentepe/Girne direkt am Mittelmeer.
+- **Service & Betreuung:** Privater Butler- & täglicher Hausmädchen-Service (8h/Tag), Pool- & Gartenpflege.
+- **Executive Transfers:** Private Transfers während der gesamten Journey (inkl. Flughafen LCA/ECN).
+- **Due Diligence & Masterclasses:** Eigentumstitel-Audits (Pre-74, Exchange/IPC), Bauträger-Bonitätsprüfungen, Internationale Steuer- und Unternehmensstrukturierung, Vor-Ort-Projektanalysen.
+- **Vollverpflegung & Experience-Budget:** Bis zu 400 € Experience-Budget, gemeinsame Mahlzeiten & 1-zu-1 Strategiegespräch inklusive.
 
 ---
 
@@ -21,9 +21,12 @@ Präsident: Benjamin Fink · Vizepräsidentin: Sandra Matausek
 
 ### 📞 Ansprechpartner:
 - **Michael Fuchs:** michael.fuchs@hfvb.at · +43 660 8102747
-- **Marcel Tammer:** marcel.tammer@web.de · +49 176 47121827
+- **Marcel Tammer:** journey@exitstrategy.at · +49 176 47121827
 
 ---
 
 ## 🚀 Standalone Web Experience
-Diese Seite ist als eigenständige, performante Web-App aufgebaut und kann direkt via GitHub Pages oder Claude.ai Artifacts betrieben werden.
+Diese Seite ist als eigenständige, performante Web-App aufgebaut und kann direkt via GitHub Pages betrieben werden.
+- **AGB & Teilnahmebedingungen:** `agb.html` / `journey-agb.html`
+- **Impressum:** `impressum.html`
+- **Datenschutz:** `datenschutz.html`
