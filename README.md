@@ -14,6 +14,16 @@
 
 ---
 
+## 💳 Zahlungsinformationen (Euro-Konto)
+- **Empfänger:** Michael Fuchs
+- **IBAN:** `LT63 3250 0721 1495 5649`
+- **BIC (SWIFT):** `REVOLT21`
+- **Name & Anschrift der Bank:** Revolut Bank UAB, Konstitucijos ave. 21B, 08130, Vilnius, Lithuania
+- **BIC der Senderbank:** `CHASDEFX`
+- **Verwendungszweck:** `Investor Journey 10/2026 - [Vorname Nachname]`
+
+---
+
 ## 🏛️ Veranstalter & Rechtliche Hinweise
 **KOMPASS - Forschungs- und Bildungsverein für Selbstbestimmung und Unabhängigkeit**  
 ZVR-Zahl: 1238380524 · Zustellanschrift: Münzgraben 1, 8380 Neumarkt an der Raab, Österreich  
@@ -21,7 +31,7 @@ Präsident: Benjamin Fink · Vizepräsidentin: Sandra Matausek
 
 ### 📞 Ansprechpartner:
 - **Michael Fuchs:** michael.fuchs@hfvb.at · +43 660 8102747
-- **Marcel Tammer:** journey@exitstrategy.at · +49 176 47121827
+- **Marcel Tammer:** exitstrategyjourney@proton.me · +49 176 47121827
 
 ---
 
