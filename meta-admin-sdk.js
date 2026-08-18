@@ -296,7 +296,7 @@
           const resp = await fetch(`${this.config.apiEndpoint}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password, tenant: 'exitstrategy' })
+            body: JSON.stringify({ email, password })
           });
 
           const data = await resp.json();
