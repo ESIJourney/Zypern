@@ -1,6 +1,6 @@
 ﻿/**
  * @ohm/meta-admin-sdk - Universal In-Browser Meta-Admin & Visual Inline Editor
- * Provides an inline-editing overlay, OHM SSO authentication, and GitHub API Auto-Sync.
+ * Compact floating cog (top-right) with OHM SSO Admin Login and GitHub Auto-Sync.
  */
 
 (function(global) {
@@ -10,11 +10,11 @@
     repoOwner: 'ESIJourney',
     repoName: 'Zypern',
     branch: 'main',
-    filePath: 'journey.html',
-    apiEndpoint: '/exitstrategy-api',
+    filePath: window.location.pathname.endsWith('journey2.html') ? 'journey2.html' : 'journey.html',
+    apiEndpoint: 'https://offlinehumanmode.com/exitstrategy-api',
     authStorageKey: 'esi_crm_token',
+    userStorageKey: 'esi_crm_user',
     githubTokenStorageKey: 'esi_github_pat',
-    ssoLoginUrl: '/crm/crm.html',
     allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'span', 'strong', 'em', 'b', 'i', 'figcaption', 'div']
   };
 
@@ -39,6 +39,14 @@
       return localStorage.getItem(this.config.authStorageKey) || '';
     }
 
+    getUser() {
+      try {
+        return JSON.parse(localStorage.getItem(this.config.userStorageKey) || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
     getGitHubToken() {
       return localStorage.getItem(this.config.githubTokenStorageKey) || '';
     }
@@ -54,110 +62,170 @@
       host.id = 'meta-admin-sdk-root';
       host.innerHTML = `
         <style>
-          #meta-admin-sdk-bar {
+          #meta-admin-cog-btn {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            top: 18px;
+            right: 18px;
             z-index: 999999;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(12px);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 50px;
-            padding: 8px 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            color: #ffffff;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-          #meta-admin-sdk-bar:hover {
-            border-color: rgba(212, 175, 55, 0.8);
-            box-shadow: 0 14px 30px rgba(0,0,0,0.6);
-          }
-          .meta-admin-btn {
-            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-            color: #0f172a;
-            border: none;
-            border-radius: 999px;
-            padding: 6px 14px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
+            color: #fef08a;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: transform 0.15s ease, opacity 0.15s ease;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.25s ease;
+            font-size: 18px;
           }
-          .meta-admin-btn:hover {
-            transform: scale(1.04);
-          }
-          .meta-admin-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            color: #f1f5f9;
-            border: 1px solid rgba(255,255,255,0.2);
-          }
-          .meta-admin-status {
-            font-size: 12px;
-            color: #94a3b8;
-            max-width: 200px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          .meta-admin-editable-highlight {
-            outline: 2px dashed #eab308 !important;
-            outline-offset: 3px !important;
-            cursor: text !important;
-            position: relative;
-          }
-          .meta-admin-editable-highlight:hover {
-            background: rgba(234, 179, 8, 0.12) !important;
+          #meta-admin-cog-btn:hover {
+            transform: rotate(30deg) scale(1.1);
+            background: rgba(15, 23, 42, 0.98);
+            border-color: rgba(212, 175, 55, 0.9);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
           }
           #meta-admin-modal {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px);
             z-index: 1000000;
             display: none;
             align-items: center;
             justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
           }
-          .meta-admin-modal-card {
+          .meta-admin-card {
             background: #0f172a;
             border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 16px;
             padding: 24px;
             width: 90%;
-            max-width: 440px;
+            max-width: 420px;
             color: #fff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+          }
+          .meta-admin-input {
+            width: 100%;
+            box-sizing: border-box;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #fff;
+            font-size: 13.5px;
+            margin-bottom: 12px;
+          }
+          .meta-admin-input:focus {
+            outline: none;
+            border-color: #eab308;
+          }
+          .meta-admin-btn {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: #0f172a;
+            border: none;
+            border-radius: 8px;
+            padding: 9px 16px;
+            font-weight: 700;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+          .meta-admin-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+          }
+          .meta-admin-btn.secondary {
+            background: rgba(255,255,255,0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.15);
+          }
+          .meta-admin-btn.secondary:hover {
+            background: rgba(255,255,255,0.15);
+          }
+          .meta-admin-editable-highlight {
+            outline: 2px dashed #eab308 !important;
+            outline-offset: 3px !important;
+            cursor: text !important;
+          }
+          .meta-admin-editable-highlight:hover {
+            background: rgba(234, 179, 8, 0.12) !important;
+          }
+          #meta-admin-floating-bar {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999999;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 50px;
+            padding: 8px 18px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+            font-family: sans-serif;
+            color: #fff;
           }
         </style>
 
-        <div id="meta-admin-sdk-bar">
-          <span style="font-size: 15px;">🛠️</span>
-          <span id="meta-admin-label" style="font-weight: 600; font-size: 13px; color: #fef08a;">Meta-Admin</span>
-          <span id="meta-admin-status-text" class="meta-admin-status">Bereit</span>
-          <button id="meta-admin-toggle-btn" class="meta-admin-btn">Editieren</button>
-          <button id="meta-admin-save-btn" class="meta-admin-btn" style="display: none; background: #22c55e; color:#fff;">✓ Sync to GitHub</button>
-          <button id="meta-admin-settings-btn" class="meta-admin-btn secondary" style="padding: 6px 8px;" title="Einstellungen">⚙️</button>
+        <!-- Compact Cog Top-Right -->
+        <button id="meta-admin-cog-btn" title="Meta-Admin &amp; Editor">⚙️</button>
+
+        <!-- Floating Live Save Bar (visible only during active edit) -->
+        <div id="meta-admin-floating-bar">
+          <span style="font-size: 13px; color: #fef08a; font-weight: 600;">✏️ Edit-Modus aktiv</span>
+          <button id="meta-admin-float-cancel" class="meta-admin-btn secondary" style="padding: 5px 12px; font-size: 12px;">Abbrechen</button>
+          <button id="meta-admin-float-save" class="meta-admin-btn" style="background: #22c55e; color: #fff; padding: 5px 14px; font-size: 12px;">✓ Sync to GitHub</button>
         </div>
 
+        <!-- Main Modal / Login & Control -->
         <div id="meta-admin-modal">
-          <div class="meta-admin-modal-card">
-            <h3 style="margin-top:0; color:#fef08a; font-size: 1.2rem;">⚙️ Meta-Admin &amp; GitHub Sync</h3>
-            <p style="font-size: 0.85rem; color:#94a3b8; line-height: 1.5;">
-              Gib dein GitHub Personal Access Token (PAT) ein oder nutze den OHM-SSO-Login für automatische Repo-Syncs.
-            </p>
-            <div style="margin: 15px 0;">
-              <label style="font-size: 12px; color:#cbd5e1; display:block; margin-bottom: 4px;">GitHub PAT (repo permission):</label>
-              <input type="password" id="meta-admin-pat-input" style="width:100%; box-sizing:border-box; background:#1e293b; border:1px solid #334155; border-radius:8px; padding:10px; color:#fff;" placeholder="ghp_..."/>
+          <div class="meta-admin-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <h3 style="margin: 0; color: #fef08a; font-size: 1.25rem;">🛠️ Meta-Admin</h3>
+              <button id="meta-admin-modal-x" style="background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
             </div>
-            <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
-              <button id="meta-admin-modal-close" class="meta-admin-btn secondary">Abbrechen</button>
-              <button id="meta-admin-modal-save" class="meta-admin-btn">Speichern</button>
+
+            <div id="meta-admin-auth-view" style="display: none;">
+              <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 0;">
+                Melde dich mit deinem OHM / CRM Admin-Konto an oder hinterlege dein GitHub Token.
+              </p>
+              <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">E-Mail (Admin)</label>
+              <input type="email" id="meta-admin-email" class="meta-admin-input" placeholder="admin@offlinehumanmode.com" />
+              <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">Passwort</label>
+              <input type="password" id="meta-admin-password" class="meta-admin-input" placeholder="••••••••" />
+              
+              <div style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;">
+                <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">GitHub PAT (Optional für direkten Commit):</label>
+                <input type="password" id="meta-admin-pat" class="meta-admin-input" placeholder="ghp_..." />
+              </div>
+
+              <div id="meta-admin-login-error" style="color: #f87171; font-size: 12px; margin-bottom: 10px; display: none;"></div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
+                <button id="meta-admin-login-btn" class="meta-admin-btn" style="width: 100%;">Anmelden &amp; Freischalten</button>
+              </div>
+            </div>
+
+            <div id="meta-admin-control-view" style="display: none;">
+              <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+                <span style="font-size: 12px; color: #94a3b8; display: block;">Eingeloggt als Admin:</span>
+                <strong id="meta-admin-user-label" style="color: #38bdf8; font-size: 13.5px;">admin</strong>
+              </div>
+
+              <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 18px;">
+                Klicke auf <strong>"Seite jetzt bearbeiten"</strong>, um Texte direkt auf der Seite anzupassen und anschließend auf GitHub zu synchronisieren.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="meta-admin-start-edit-btn" class="meta-admin-btn" style="width: 100%;">✏️ Seite jetzt bearbeiten</button>
+                <button id="meta-admin-logout-btn" class="meta-admin-btn secondary" style="width: 100%;">Abmelden</button>
+              </div>
             </div>
           </div>
         </div>
@@ -168,69 +236,117 @@
     }
 
     bindEvents() {
-      const toggleBtn = document.getElementById('meta-admin-toggle-btn');
-      const saveBtn = document.getElementById('meta-admin-save-btn');
-      const settingsBtn = document.getElementById('meta-admin-settings-btn');
+      const cogBtn = document.getElementById('meta-admin-cog-btn');
       const modal = document.getElementById('meta-admin-modal');
-      const modalClose = document.getElementById('meta-admin-modal-close');
-      const modalSave = document.getElementById('meta-admin-modal-save');
-      const patInput = document.getElementById('meta-admin-pat-input');
+      const closeBtn = document.getElementById('meta-admin-modal-x');
+      const authView = document.getElementById('meta-admin-auth-view');
+      const controlView = document.getElementById('meta-admin-control-view');
+      const userLabel = document.getElementById('meta-admin-user-label');
+      const loginBtn = document.getElementById('meta-admin-login-btn');
+      const logoutBtn = document.getElementById('meta-admin-logout-btn');
+      const startEditBtn = document.getElementById('meta-admin-start-edit-btn');
+      const floatCancel = document.getElementById('meta-admin-float-cancel');
+      const floatSave = document.getElementById('meta-admin-float-save');
+      const patInput = document.getElementById('meta-admin-pat');
+      const errBox = document.getElementById('meta-admin-login-error');
 
-      toggleBtn.addEventListener('click', () => this.toggleEditMode());
-      saveBtn.addEventListener('click', () => this.syncToGitHub());
+      const refreshViewState = () => {
+        if (this.isAuthenticated()) {
+          authView.style.display = 'none';
+          controlView.style.display = 'block';
+          const u = this.getUser();
+          userLabel.textContent = u.email || 'Meta-Admin';
+        } else {
+          authView.style.display = 'block';
+          controlView.style.display = 'none';
+          patInput.value = this.getGitHubToken();
+        }
+      };
 
-      settingsBtn.addEventListener('click', () => {
-        patInput.value = this.getGitHubToken();
+      cogBtn.addEventListener('click', () => {
+        refreshViewState();
         modal.style.display = 'flex';
       });
 
-      modalClose.addEventListener('click', () => {
+      closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
       });
 
-      modalSave.addEventListener('click', () => {
-        const val = patInput.value.trim();
-        if (val) {
-          localStorage.setItem(this.config.githubTokenStorageKey, val);
-          this.setStatus('GitHub Token gespeichert');
-        } else {
-          localStorage.removeItem(this.config.githubTokenStorageKey);
-          this.setStatus('Token entfernt');
+      loginBtn.addEventListener('click', async () => {
+        errBox.style.display = 'none';
+        const email = document.getElementById('meta-admin-email').value.trim();
+        const password = document.getElementById('meta-admin-password').value.trim();
+        const pat = patInput.value.trim();
+
+        if (pat) {
+          localStorage.setItem(this.config.githubTokenStorageKey, pat);
+          localStorage.setItem(this.config.userStorageKey, JSON.stringify({ email: email || 'GitHub Admin' }));
+          refreshViewState();
+          return;
         }
-        modal.style.display = 'none';
+
+        if (!email || !password) {
+          errBox.textContent = 'Bitte E-Mail und Passwort eingeben.';
+          errBox.style.display = 'block';
+          return;
+        }
+
+        loginBtn.textContent = 'Prüfe Zugang…';
+        try {
+          const resp = await fetch(`${this.config.apiEndpoint}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password, tenant: 'exitstrategy' })
+          });
+
+          const data = await resp.json();
+          if (!resp.ok) throw new Error(data.message || 'Login fehlgeschlagen');
+
+          localStorage.setItem(this.config.authStorageKey, data.accessToken || data.token);
+          localStorage.setItem(this.config.userStorageKey, JSON.stringify({ email }));
+          loginBtn.textContent = 'Anmelden & Freischalten';
+          refreshViewState();
+        } catch (err) {
+          loginBtn.textContent = 'Anmelden & Freischalten';
+          errBox.textContent = err.message;
+          errBox.style.display = 'block';
+        }
       });
-    }
 
-    setStatus(text) {
-      const el = document.getElementById('meta-admin-status-text');
-      if (el) el.textContent = text;
-    }
-
-    toggleEditMode() {
-      this.isEditing = !this.isEditing;
-      const toggleBtn = document.getElementById('meta-admin-toggle-btn');
-      const saveBtn = document.getElementById('meta-admin-save-btn');
-
-      if (this.isEditing) {
-        toggleBtn.textContent = 'Abbrechen';
-        toggleBtn.classList.add('secondary');
-        saveBtn.style.display = 'flex';
-        this.enableInlineEditing();
-        this.setStatus('Bearbeitungsmodus aktiv');
-      } else {
-        toggleBtn.textContent = 'Editieren';
-        toggleBtn.classList.remove('secondary');
-        saveBtn.style.display = 'none';
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem(this.config.authStorageKey);
+        localStorage.removeItem(this.config.userStorageKey);
+        localStorage.removeItem(this.config.githubTokenStorageKey);
         this.disableInlineEditing();
-        this.setStatus('Bereit');
-      }
+        refreshViewState();
+      });
+
+      startEditBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        this.enableInlineEditing();
+      });
+
+      floatCancel.addEventListener('click', () => {
+        this.disableInlineEditing();
+      });
+
+      floatSave.addEventListener('click', () => {
+        this.syncToGitHub();
+      });
     }
 
     enableInlineEditing() {
+      if (!this.isAuthenticated()) {
+        document.getElementById('meta-admin-modal').style.display = 'flex';
+        return;
+      }
+
+      this.isEditing = true;
+      document.getElementById('meta-admin-floating-bar').style.display = 'flex';
+
       const candidates = document.querySelectorAll(this.config.allowedTags.join(','));
-      candidates.forEach((el, index) => {
+      candidates.forEach(el => {
         if (el.closest('#meta-admin-sdk-root') || el.closest('script, style, svg, pre, code')) return;
-        // Don't edit container divs with deep complex layouts
         if (el.children.length > 0 && ['DIV', 'SECTION', 'MAIN', 'ARTICLE'].includes(el.tagName)) return;
 
         el.setAttribute('contenteditable', 'true');
@@ -242,6 +358,9 @@
     }
 
     disableInlineEditing() {
+      this.isEditing = false;
+      document.getElementById('meta-admin-floating-bar').style.display = 'none';
+
       const candidates = document.querySelectorAll('.meta-admin-editable-highlight');
       candidates.forEach(el => {
         el.removeAttribute('contenteditable');
@@ -250,15 +369,12 @@
     }
 
     async syncToGitHub() {
-      this.setStatus('Pushe zu GitHub…');
       this.disableInlineEditing();
 
-      // Clean cloned HTML string
       const clone = document.documentElement.cloneNode(true);
       const sdkRoot = clone.querySelector('#meta-admin-sdk-root');
       if (sdkRoot) sdkRoot.remove();
 
-      // Remove contenteditable remnants
       clone.querySelectorAll('[contenteditable]').forEach(el => {
         el.removeAttribute('contenteditable');
         el.classList.remove('meta-admin-editable-highlight');
@@ -268,7 +384,7 @@
       const token = this.getGitHubToken();
 
       if (!token) {
-        // Fallback to backend API
+        // Direct commit via backend gitops
         try {
           const resp = await fetch(`${this.config.apiEndpoint}/meta-admin/direct-sync`, {
             method: 'POST',
@@ -284,28 +400,19 @@
           });
 
           if (resp.ok) {
-            this.setStatus('✓ Erfolgreich synchronisiert!');
-            this.isEditing = false;
-            document.getElementById('meta-admin-save-btn').style.display = 'none';
-            document.getElementById('meta-admin-toggle-btn').textContent = 'Editieren';
-            document.getElementById('meta-admin-toggle-btn').classList.remove('secondary');
+            alert('✓ Erfolgreich synchronisiert und live aktualisiert!');
             return;
           }
-        } catch (e) {
-          // Continue to GitHub API error notice
-        }
+        } catch (e) {}
 
-        // If no token, prompt user
+        alert('Bitte hinterlege in den Meta-Admin-Einstellungen (Zahnrad) dein GitHub PAT Token für den direkten Push.');
         document.getElementById('meta-admin-modal').style.display = 'flex';
-        this.setStatus('GitHub Token erforderlich');
         return;
       }
 
       try {
-        // GitHub API direct commit
         const apiUrl = `https://api.github.com/repos/${this.config.repoOwner}/${this.config.repoName}/contents/${this.config.filePath}`;
         
-        // 1. Get current file SHA
         const getRes = await fetch(apiUrl + `?ref=${this.config.branch}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -317,7 +424,6 @@
         const getData = await getRes.json();
         const sha = getData.sha;
 
-        // 2. Put updated content
         const encoder = new TextEncoder();
         const data = encoder.encode(fullHtml);
         let binary = '';
@@ -347,24 +453,16 @@
           throw new Error(errData.message || 'GitHub Commit fehlgeschlagen.');
         }
 
-        this.setStatus('✓ Live auf GitHub gepusht!');
-        this.isEditing = false;
-        document.getElementById('meta-admin-save-btn').style.display = 'none';
-        document.getElementById('meta-admin-toggle-btn').textContent = 'Editieren';
-        document.getElementById('meta-admin-toggle-btn').classList.remove('secondary');
-        alert('Änderungen wurden erfolgreich auf GitHub gespeichert und werden bereitgestellt.');
+        alert('✓ Änderungen wurden erfolgreich auf GitHub gespeichert und bereitgestellt.');
       } catch (err) {
         console.error('MetaAdminSDK Sync Error:', err);
-        this.setStatus('Fehler beim Sync');
         alert('Fehler beim Synchronisieren: ' + err.message);
       }
     }
   }
 
-  // Export
   global.MetaAdminSDK = MetaAdminSDK;
 
-  // Auto-initialize if data-auto-init attribute is present or on DOM load
   if (typeof window !== 'undefined') {
     window.addEventListener('DOMContentLoaded', () => {
       if (!window.__metaAdminInstance) {
