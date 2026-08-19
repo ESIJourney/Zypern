@@ -1,19 +1,19 @@
 /**
  * @ohm/meta-admin-sdk
- * Sovereign Meta-Admin, Visual Page & Sub-Canva Editor with GitHub GitOps Sync
+ * Sovereign Meta-Admin, Visual Page & Universal Canva Editor with Direct GitHub GitOps Sync
  *
- * Features:
- * - Ultra-compact Top-Right Floating Cog (⚙️)
- * - Multi-tenant & GitHub PAT Authentication
- * - Text & Content Inline Editing
- * - Full Canva & Sub-Canva Management:
- *    • Parent Canva (Cards, Grids, Boxes)
- *    • Sub-Canva (List items, pricing bullets, feature points, FAQ items)
- *    • Auto-reflow (keine leeren Löcher, Elemente rücken nahtlos nach oben auf)
- *    • Duplicate & Insert Below: Neues Element/Sub-Canva wird direkt unter dem aktuellen eingefügt
- *    • Delete Sub-Canva: Einzelne Zeilen/Punkte/Bullets direkt löschen
+ * Capabilities:
+ * - 100% Comprehensive Coverage: Every text leaf, paragraph, heading, list item, badge, table cell,
+ *   and pricing/condition block is fully contenteditable.
+ * - Deep Recursive Editable Scanner: Targets all semantic elements including <li>, <td>, <th>, <strong>, <span>, <a>, <p>, <h1-h6>, <div> leaves.
+ * - Smart Canva Architecture:
+ *    • Parent Canva (Cards, Pricing Cards, Feature Boxes, Testimonials, Condition Cards, Bank Cards, Timeline Items)
+ *    • Sub-Canva (List items, pricing bullets, inclusive/exclusive rows, booking rules, table rows)
+ *    • Auto-reflow (no empty gaps; sibling blocks smoothly collapse upwards)
+ *    • Duplicate & Insert Below: Duplicated parent canva or sub-row is inserted cleanly right beneath
+ *    • Delete: Direct deletion with auto-reordering
  *    • Reorder: ⬆️ / ⬇️
- * - Cache-Busting Direct GitHub GitOps Sync (Auto-Commit & Auto-Push)
+ * - Cache-Busting Direct GitHub GitOps Sync (Auto-Commit & Auto-Push with SHA verification)
  */
 
 (function (window, document) {
@@ -30,9 +30,32 @@
         repoName: 'Zypern',
         branch: 'main',
         filePath: window.location.pathname.split('/').filter(Boolean).pop() || 'journey.html',
-        allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'a', 'strong', 'em', 'b', 'i', 'div.hero-badge', 'div.timeline-title', 'div.timeline-desc', 'div.slide-caption', 'div.hero-stat-value', 'div.hero-stat-label', 'div.price-val', 'div.pricing-price', 'div.pricing-label', 'div.pricing-popular', 'div.pricing-per'],
-        canvaSelectors: ['.pricing-card', '.outcome-card', '.timeline-item', '.target-box', '.partner-card', '.faq-item', '.card', '.testimonial-card'],
-        subCanvaSelectors: ['.pricing-features li', '.timeline-desc', 'ul.pricing-features > li', '.target-box li', '.outcome-card li', '#unterkunft ul > li', '.highlights-list li', '.details-list li'],
+        
+        // Parent Canva / Card Containers
+        canvaSelectors: [
+          '.pricing-card',
+          '.outcome-card',
+          '.timeline-item',
+          '.target-box',
+          '.partner-card',
+          '.faq-item',
+          '.card',
+          '.testimonial-card',
+          '.dd-card',
+          '.pricing-note',
+          'div[style*="grid-template-columns"] > div',
+          '.cards-grid > div'
+        ],
+
+        // Sub-Canva Elements (Individual Rows, Bullets, Rules, Table Rows)
+        subCanvaSelectors: [
+          'ul > li',
+          'ol > li',
+          '.pricing-features li',
+          '.timeline-desc',
+          'table tbody tr'
+        ],
+
         ...options
       };
 
@@ -181,8 +204,8 @@
             position: relative;
             outline: 1.5px dashed rgba(245, 158, 11, 0.7) !important;
             outline-offset: 2px !important;
-            margin-top: 4px;
-            margin-bottom: 4px;
+            margin-top: 3px;
+            margin-bottom: 3px;
             transition: all 0.2s ease;
           }
           .meta-admin-canva-tools {
@@ -200,7 +223,7 @@
           }
           .meta-admin-sub-tools {
             position: absolute;
-            right: -2px;
+            right: 0px;
             top: -24px;
             z-index: 10005;
             display: none;
@@ -270,7 +293,7 @@
 
         <!-- Floating Live Save Bar (visible only during active edit) -->
         <div id="meta-admin-floating-bar">
-          <span style="font-size: 13px; color: #fef08a; font-weight: 600;">✏️ Edit-Modus aktiv</span>
+          <span style="font-size: 13px; color: #fef08a; font-weight: 600;">✏️ Universal Edit-Modus aktiv</span>
           <button id="meta-admin-float-cancel" class="meta-admin-btn secondary" style="padding: 5px 12px; font-size: 12px;">Abbrechen</button>
           <button id="meta-admin-float-save" class="meta-admin-btn" style="background: #22c55e; color: #fff; padding: 5px 14px; font-size: 12px;">✓ Sync to GitHub</button>
         </div>
@@ -312,9 +335,9 @@
               </div>
 
               <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
-                ✓ <strong>Texte:</strong> Anklicken und direkt editieren.<br>
-                ✓ <strong>Große Canva-Boxen:</strong> Mit <strong>[➕ Duplizieren]</strong> untereinander einfügen oder <strong>[🗑️ Löschen]</strong>.<br>
-                ✓ <strong>Sub-Canva (Zeilen &amp; Listenpunkte):</strong> Fahre über eine einzelne Zeile oder einen Listenpunkt in der Preisbox, um ihn mit <strong>[➕ Zeile]</strong> darunter einzufügen oder mit <strong>[✕]</strong> sauber zu löschen (Elemente rücken automatisch nach oben auf).
+                ✓ <strong>100% Aller Texte &amp; Listen:</strong> Anklicken &amp; direkt bearbeiten (Überschriften, Inklusiv-/Exklusivleistungen, Konditionen, Fristen, Bankdaten).<br>
+                ✓ <strong>Große Boxen:</strong> Mit <strong>[+ Canva duplizieren]</strong> oder <strong>[🗑️ Löschen]</strong> verwalten.<br>
+                ✓ <strong>Sub-Canva (Zeilen &amp; Listenpunkte):</strong> Mit <strong>[➕ Zeile]</strong> direkt darunter einfügen oder mit <strong>[✕]</strong> löschen (restliche Elemente rücken nahtlos nach oben auf).
               </p>
 
               <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -433,6 +456,17 @@
       });
     }
 
+    makeElementEditable(el) {
+      if (el.closest('#meta-admin-sdk-root') || el.closest('script, style, svg, pre, code')) return;
+      if (el.classList.contains('meta-admin-canva-tools') || el.classList.contains('meta-admin-sub-tools')) return;
+
+      el.setAttribute('contenteditable', 'true');
+      el.classList.add('meta-admin-editable-highlight');
+      if (!this.originalContent.has(el)) {
+        this.originalContent.set(el, el.innerHTML);
+      }
+    }
+
     enableInlineEditing() {
       if (!this.isAuthenticated()) {
         document.getElementById('meta-admin-modal').style.display = 'flex';
@@ -442,27 +476,37 @@
       this.isEditing = true;
       document.getElementById('meta-admin-floating-bar').style.display = 'flex';
 
-      // 1. Text In-place editing
-      const candidates = document.querySelectorAll(this.config.allowedTags.join(','));
-      candidates.forEach(el => {
+      // 1. Universal Text In-Place Editing (Headers, Paragraphs, Spans, Links, Strong, Li, Labels, Div Leaves)
+      const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, strong, em, b, i, li, th, td, label, div, button.btn');
+      allElements.forEach(el => {
         if (el.closest('#meta-admin-sdk-root') || el.closest('script, style, svg, pre, code')) return;
-        if (el.children.length > 0 && ['DIV', 'SECTION', 'MAIN', 'ARTICLE'].includes(el.tagName)) return;
+        
+        // Leaf nodes or direct text containers
+        const hasDirectText = Array.from(el.childNodes).some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
+        const isTextTag = ['H1','H2','H3','H4','H5','H6','P','SPAN','A','STRONG','EM','B','I','LI','TH','TD','LABEL'].includes(el.tagName);
+        const isLeafDiv = el.tagName === 'DIV' && (el.children.length === 0 || hasDirectText);
 
-        el.setAttribute('contenteditable', 'true');
-        el.classList.add('meta-admin-editable-highlight');
-        if (!this.originalContent.has(el)) {
-          this.originalContent.set(el, el.innerHTML);
+        if (isTextTag || isLeafDiv) {
+          this.makeElementEditable(el);
         }
       });
 
-      // 2. Parent Canva Boxes
+      // 2. Parent Canva Boxes (Cards, Pricing, Containers)
       this.config.canvaSelectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach(box => this.attachCanvaTools(box));
+        document.querySelectorAll(sel).forEach(box => {
+          if (!box.closest('#meta-admin-sdk-root')) {
+            this.attachCanvaTools(box);
+          }
+        });
       });
 
-      // 3. Sub-Canva Elements (List Items, Pricing Bullets, Features)
+      // 3. Sub-Canva Elements (All List Items, Feature Bullets, Table Rows)
       this.config.subCanvaSelectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach(subEl => this.attachSubCanvaTools(subEl));
+        document.querySelectorAll(sel).forEach(subEl => {
+          if (!subEl.closest('#meta-admin-sdk-root')) {
+            this.attachSubCanvaTools(subEl);
+          }
+        });
       });
     }
 
@@ -497,11 +541,13 @@
           this.attachCanvaTools(clone);
 
           // Attach sub tools and editability inside clone
-          clone.querySelectorAll(this.config.subCanvaSelectors.join(',')).forEach(s => this.attachSubCanvaTools(s));
-          clone.querySelectorAll(this.config.allowedTags.join(',')).forEach(el => {
-            if (el.children.length === 0 || !['DIV', 'SECTION', 'MAIN', 'ARTICLE'].includes(el.tagName)) {
-              el.setAttribute('contenteditable', 'true');
-              el.classList.add('meta-admin-editable-highlight');
+          this.config.subCanvaSelectors.forEach(sel => {
+            clone.querySelectorAll(sel).forEach(s => this.attachSubCanvaTools(s));
+          });
+          clone.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, strong, em, b, i, li, th, td, label, div').forEach(el => {
+            const hasDirectText = Array.from(el.childNodes).some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
+            if (['H1','H2','H3','H4','H5','H6','P','SPAN','A','STRONG','EM','B','I','LI','TH','TD','LABEL'].includes(el.tagName) || (el.tagName === 'DIV' && (el.children.length === 0 || hasDirectText))) {
+              this.makeElementEditable(el);
             }
           });
         } else if (act === 'del') {
@@ -530,8 +576,8 @@
       subEl.classList.add('meta-admin-sub-canva');
 
       // Make sure content inside is editable
-      subEl.setAttribute('contenteditable', 'true');
-      subEl.classList.add('meta-admin-editable-highlight');
+      this.makeElementEditable(subEl);
+      subEl.querySelectorAll('span, a, strong, em, b, i').forEach(child => this.makeElementEditable(child));
 
       const tools = document.createElement('div');
       tools.className = 'meta-admin-sub-tools';
@@ -578,7 +624,8 @@
 
     disableInlineEditing() {
       this.isEditing = false;
-      document.getElementById('meta-admin-floating-bar').style.display = 'none';
+      const floatBar = document.getElementById('meta-admin-floating-bar');
+      if (floatBar) floatBar.style.display = 'none';
 
       const candidates = document.querySelectorAll('.meta-admin-editable-highlight');
       candidates.forEach(el => {
