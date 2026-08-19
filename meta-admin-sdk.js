@@ -1,29 +1,41 @@
-﻿/**
- * @ohm/meta-admin-sdk - Universal In-Browser Meta-Admin & Visual Inline Editor
- * Compact floating cog (top-right) with OHM SSO Admin Login and GitHub Auto-Sync.
+/**
+ * @ohm/meta-admin-sdk
+ * Sovereign Meta-Admin & Live Visual Page Editor with GitHub GitOps Sync
+ *
+ * Features:
+ * - Ultra-compact Top-Right Floating Cog (⚙️)
+ * - Protected Auth Modal (OHM / CRM Multi-tenant Login or direct GitHub PAT)
+ * - Text & Content Inline Editing
+ * - Canva / Card / Element Actions:
+ *    ➕ "+ Canva / Box duplizieren" (Fügt ein neues Element / Card / Canva hinzu)
+ *    🗑️ "🗑️ Box löschen" (Löscht ein gewähltes Element / Canva / Card)
+ *    ⬆️ / ⬇️ Reihenfolge verschieben
+ * - Direct GitHub API GitOps Auto-Commit & Auto-Push with Pre-Flight Collision Guard
  */
 
-(function(global) {
+(function (window, document) {
   'use strict';
 
-  const DEFAULT_CONFIG = {
-    repoOwner: 'ESIJourney',
-    repoName: 'Zypern',
-    branch: 'main',
-    filePath: window.location.pathname.endsWith('journey2.html') ? 'journey2.html' : 'journey.html',
-    apiEndpoint: 'https://offlinehumanmode.com/exitstrategy-api',
-    authStorageKey: 'esi_crm_token',
-    userStorageKey: 'esi_crm_user',
-    githubTokenStorageKey: 'esi_github_pat',
-    allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'span', 'strong', 'em', 'b', 'i', 'figcaption', 'div']
-  };
-
   class MetaAdminSDK {
-    constructor(userConfig = {}) {
-      this.config = Object.assign({}, DEFAULT_CONFIG, userConfig);
+    constructor(options = {}) {
+      this.config = {
+        apiEndpoint: 'https://offlinehumanmode.com/exitstrategy-api',
+        githubTokenStorageKey: 'meta_admin_gh_token',
+        authStorageKey: 'meta_admin_auth_token',
+        userStorageKey: 'meta_admin_user',
+        repoOwner: 'ESIJourney',
+        repoName: 'Zypern',
+        branch: 'main',
+        filePath: window.location.pathname.split('/').pop() || 'journey.html',
+        allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'span', 'a', 'strong', 'em', 'b', 'i', 'div.hero-badge', 'div.timeline-title', 'div.timeline-desc', 'div.slide-caption', 'div.hero-stat-value', 'div.hero-stat-label', 'div.price-val', 'div.pricing-card', 'div.target-box', 'div.timeline-item', 'div.outcome-card', 'div.partner-card', 'div.card', 'div.faq-item'],
+        canvaContainers: ['.cards-grid', '.pricing-grid', '.timeline', '.target-grid', '.outcomes-grid', '.faq-list', '.pricing-cards', '.hero-buttons', '.hero-stats'],
+        ...options
+      };
+
       this.isEditing = false;
       this.activeElement = null;
       this.originalContent = new Map();
+
       this.init();
     }
 
@@ -36,7 +48,11 @@
     }
 
     getAuthToken() {
-      return localStorage.getItem(this.config.authStorageKey) || '';
+      return localStorage.getItem(this.config.authStorageKey);
+    }
+
+    getGitHubToken() {
+      return localStorage.getItem(this.config.githubTokenStorageKey);
     }
 
     getUser() {
@@ -47,12 +63,8 @@
       }
     }
 
-    getGitHubToken() {
-      return localStorage.getItem(this.config.githubTokenStorageKey) || '';
-    }
-
     isAuthenticated() {
-      return !!(this.getAuthToken() || this.getGitHubToken());
+      return Boolean(this.getGitHubToken() || this.getAuthToken());
     }
 
     injectUI() {
@@ -64,79 +76,79 @@
         <style>
           #meta-admin-cog-btn {
             position: fixed;
-            top: 18px;
-            right: 18px;
+            top: 16px;
+            right: 16px;
             z-index: 999999;
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(212, 175, 55, 0.4);
             color: #fef08a;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-size: 20px;
             transition: all 0.25s ease;
-            font-size: 18px;
           }
           #meta-admin-cog-btn:hover {
-            transform: rotate(30deg) scale(1.1);
-            background: rgba(15, 23, 42, 0.98);
-            border-color: rgba(212, 175, 55, 0.9);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+            transform: rotate(30deg) scale(1.08);
+            border-color: #fbbf24;
+            background: rgba(15, 23, 42, 0.95);
           }
           #meta-admin-modal {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(6px);
-            z-index: 1000000;
             display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999999;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
             align-items: center;
             justify-content: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
           }
           .meta-admin-card {
             background: #0f172a;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 16px;
             padding: 24px;
             width: 90%;
-            max-width: 420px;
-            color: #fff;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            max-width: 440px;
+            color: #f8fafc;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
           }
           .meta-admin-input {
             width: 100%;
-            box-sizing: border-box;
-            background: #1e293b;
-            border: 1px solid #334155;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 8px;
             padding: 10px 12px;
             color: #fff;
-            font-size: 13.5px;
+            font-size: 14px;
             margin-bottom: 12px;
+            box-sizing: border-box;
           }
           .meta-admin-input:focus {
             outline: none;
             border-color: #eab308;
+            background: rgba(255,255,255,0.1);
           }
           .meta-admin-btn {
-            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            background: linear-gradient(135deg, #eab308, #ca8a04);
             color: #0f172a;
+            font-weight: 700;
             border: none;
             border-radius: 8px;
-            padding: 9px 16px;
-            font-weight: 700;
-            font-size: 13.5px;
+            padding: 10px 16px;
             cursor: pointer;
+            font-size: 14px;
             transition: all 0.2s ease;
           }
           .meta-admin-btn:hover {
-            transform: translateY(-1px);
+            opacity: 0.92;
             box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
           }
           .meta-admin-btn.secondary {
@@ -154,6 +166,47 @@
           }
           .meta-admin-editable-highlight:hover {
             background: rgba(234, 179, 8, 0.12) !important;
+          }
+          .meta-admin-canva-box {
+            position: relative;
+            outline: 2px solid rgba(56, 189, 248, 0.6) !important;
+            outline-offset: 4px !important;
+          }
+          .meta-admin-canva-tools {
+            position: absolute;
+            top: -34px;
+            right: 8px;
+            z-index: 10000;
+            display: flex;
+            gap: 4px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            border-radius: 6px;
+            padding: 3px 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+          }
+          .meta-admin-tool-btn {
+            background: transparent;
+            border: none;
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+          }
+          .meta-admin-tool-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            color: #fff;
+          }
+          .meta-admin-tool-btn.danger {
+            color: #f87171;
+          }
+          .meta-admin-tool-btn.danger:hover {
+            background: rgba(248, 113, 113, 0.2);
           }
           #meta-admin-floating-bar {
             position: fixed;
@@ -187,22 +240,23 @@
         <div id="meta-admin-modal">
           <div class="meta-admin-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <h3 style="margin: 0; color: #fef08a; font-size: 1.25rem;">🛠️ Meta-Admin</h3>
+              <h3 style="margin: 0; color: #fef08a; font-size: 1.25rem;">🛠️ Meta-Admin &amp; Canva Editor</h3>
               <button id="meta-admin-modal-x" style="background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
             </div>
 
             <div id="meta-admin-auth-view" style="display: none;">
               <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 0;">
-                Melde dich mit deinem OHM / CRM Admin-Konto an oder hinterlege dein GitHub Token.
+                Melde dich mit deinem OHM / CRM Admin-Konto an oder hinterlege dein GitHub PAT Token für direkten GitOps-Push.
               </p>
-              <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">E-Mail (Admin)</label>
-              <input type="email" id="meta-admin-email" class="meta-admin-input" placeholder="admin@offlinehumanmode.com" />
-              <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">Passwort</label>
-              <input type="password" id="meta-admin-password" class="meta-admin-input" placeholder="••••••••" />
+              <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">GitHub PAT Token (Klassisch / Fine-Grained):</label>
+              <input type="password" id="meta-admin-pat" class="meta-admin-input" placeholder="ghp_..." />
               
               <div style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;">
-                <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">GitHub PAT (Optional für direkten Commit):</label>
-                <input type="password" id="meta-admin-pat" class="meta-admin-input" placeholder="ghp_..." />
+                <span style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 8px;">— oder via CRM-Passwort —</span>
+                <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">E-Mail (Admin)</label>
+                <input type="email" id="meta-admin-email" class="meta-admin-input" placeholder="admin@exitstrategy.cc" />
+                <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">Passwort</label>
+                <input type="password" id="meta-admin-password" class="meta-admin-input" placeholder="••••••••" />
               </div>
 
               <div id="meta-admin-login-error" style="color: #f87171; font-size: 12px; margin-bottom: 10px; display: none;"></div>
@@ -214,17 +268,18 @@
 
             <div id="meta-admin-control-view" style="display: none;">
               <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-                <span style="font-size: 12px; color: #94a3b8; display: block;">Eingeloggt als Admin:</span>
+                <span style="font-size: 12px; color: #94a3b8; display: block;">Eingeloggt als Exitstrategy Member:</span>
                 <strong id="meta-admin-user-label" style="color: #38bdf8; font-size: 13.5px;">admin</strong>
               </div>
 
-              <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 18px;">
-                Klicke auf <strong>"Seite jetzt bearbeiten"</strong>, um Texte direkt auf der Seite anzupassen und anschließend auf GitHub zu synchronisieren.
+              <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
+                ✓ <strong>Texte bearbeiten:</strong> Direkt anklicken und tippen.<br>
+                ✓ <strong>Canva / Boxen:</strong> Fahre mit der Maus über ein Preiscanva oder eine Box, um sie mit <strong>[➕ Duplizieren]</strong> neu anzulegen oder mit <strong>[🗑️ Löschen]</strong> zu entfernen.
               </p>
 
               <div style="display: flex; flex-direction: column; gap: 10px;">
                 <button id="meta-admin-start-edit-btn" class="meta-admin-btn" style="width: 100%;">✏️ Seite jetzt bearbeiten</button>
-                <button id="meta-admin-logout-btn" class="meta-admin-btn secondary" style="width: 100%;">Abmelden</button>
+                <button id="meta-admin-logout-btn" class="meta-admin-btn secondary" style="width: 100%;">Abmelden / Token ändern</button>
               </div>
             </div>
           </div>
@@ -255,11 +310,11 @@
           authView.style.display = 'none';
           controlView.style.display = 'block';
           const u = this.getUser();
-          userLabel.textContent = u.email || 'Meta-Admin';
+          userLabel.textContent = u.email || (this.getGitHubToken() ? 'GitHub Admin (Michi/LLC)' : 'Meta-Admin');
         } else {
           authView.style.display = 'block';
           controlView.style.display = 'none';
-          patInput.value = this.getGitHubToken();
+          patInput.value = this.getGitHubToken() || '';
         }
       };
 
@@ -280,13 +335,13 @@
 
         if (pat) {
           localStorage.setItem(this.config.githubTokenStorageKey, pat);
-          localStorage.setItem(this.config.userStorageKey, JSON.stringify({ email: email || 'GitHub Admin' }));
+          localStorage.setItem(this.config.userStorageKey, JSON.stringify({ email: email || 'Michi (Exitstrategy LLC)' }));
           refreshViewState();
           return;
         }
 
         if (!email || !password) {
-          errBox.textContent = 'Bitte E-Mail und Passwort eingeben.';
+          errBox.textContent = 'Bitte GitHub PAT Token oder E-Mail und Passwort eingeben.';
           errBox.style.display = 'block';
           return;
         }
@@ -302,7 +357,10 @@
           const data = await resp.json();
           if (!resp.ok) throw new Error(data.message || 'Login fehlgeschlagen');
 
-          localStorage.setItem(this.config.authStorageKey, data.accessToken || data.token);
+          const token = data.accessToken || data.token || (data.chooseTenant && data.chooseTenant.length ? 'multi-tenant-pending' : '');
+          if (!token) throw new Error('Unbekannte Anmeldeantwort');
+
+          localStorage.setItem(this.config.authStorageKey, token);
           localStorage.setItem(this.config.userStorageKey, JSON.stringify({ email }));
           loginBtn.textContent = 'Anmelden & Freischalten';
           refreshViewState();
@@ -344,10 +402,15 @@
       this.isEditing = true;
       document.getElementById('meta-admin-floating-bar').style.display = 'flex';
 
+      // 1. Text & In-place element editing
       const candidates = document.querySelectorAll(this.config.allowedTags.join(','));
       candidates.forEach(el => {
         if (el.closest('#meta-admin-sdk-root') || el.closest('script, style, svg, pre, code')) return;
-        if (el.children.length > 0 && ['DIV', 'SECTION', 'MAIN', 'ARTICLE'].includes(el.tagName)) return;
+        if (el.children.length > 0 && ['DIV', 'SECTION', 'MAIN', 'ARTICLE'].includes(el.tagName)) {
+          // If it's a canva container/card, treat as Canva Box
+          this.attachCanvaTools(el);
+          return;
+        }
 
         el.setAttribute('contenteditable', 'true');
         el.classList.add('meta-admin-editable-highlight');
@@ -355,6 +418,69 @@
           this.originalContent.set(el, el.innerHTML);
         }
       });
+
+      // 2. Canva / Card elements decoration
+      const canvaSelectors = ['.pricing-card', '.outcome-card', '.timeline-item', '.target-box', '.partner-card', '.faq-item', '.card'];
+      canvaSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(box => this.attachCanvaTools(box));
+      });
+    }
+
+    attachCanvaTools(box) {
+      if (box.dataset.metaAdminCanva) return;
+      box.dataset.metaAdminCanva = 'true';
+      box.classList.add('meta-admin-canva-box');
+
+      const tools = document.createElement('div');
+      tools.className = 'meta-admin-canva-tools';
+      tools.innerHTML = `
+        <button class="meta-admin-tool-btn" data-act="dup" title="Dieses Canva/Feld duplizieren">➕ Duplizieren</button>
+        <button class="meta-admin-tool-btn" data-act="up" title="Nach oben/links verschieben">⬆️</button>
+        <button class="meta-admin-tool-btn" data-act="down" title="Nach unten/rechts verschieben">⬇️</button>
+        <button class="meta-admin-tool-btn danger" data-act="del" title="Dieses Canva/Feld löschen">🗑️ Löschen</button>
+      `;
+
+      tools.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const act = e.target.closest('button')?.dataset.act;
+        if (!act) return;
+
+        if (act === 'dup') {
+          const clone = box.cloneNode(true);
+          const oldTools = clone.querySelector('.meta-admin-canva-tools');
+          if (oldTools) oldTools.remove();
+          delete clone.dataset.metaAdminCanva;
+          clone.classList.remove('meta-admin-canva-box');
+
+          box.parentNode.insertBefore(clone, box.nextSibling);
+          this.attachCanvaTools(clone);
+
+          // Make all new text editable
+          clone.querySelectorAll(this.config.allowedTags.join(',')).forEach(el => {
+            if (el.children.length === 0 || !['DIV', 'SECTION', 'MAIN', 'ARTICLE'].includes(el.tagName)) {
+              el.setAttribute('contenteditable', 'true');
+              el.classList.add('meta-admin-editable-highlight');
+            }
+          });
+        } else if (act === 'del') {
+          if (confirm('Möchtest du dieses Canva / Feld wirklich löschen?')) {
+            box.remove();
+          }
+        } else if (act === 'up') {
+          const prev = box.previousElementSibling;
+          if (prev && !prev.classList.contains('meta-admin-tools')) {
+            box.parentNode.insertBefore(box, prev);
+          }
+        } else if (act === 'down') {
+          const next = box.nextElementSibling;
+          if (next) {
+            box.parentNode.insertBefore(next, box);
+          }
+        }
+      });
+
+      box.appendChild(tools);
     }
 
     disableInlineEditing() {
@@ -365,6 +491,12 @@
       candidates.forEach(el => {
         el.removeAttribute('contenteditable');
         el.classList.remove('meta-admin-editable-highlight');
+      });
+
+      document.querySelectorAll('.meta-admin-canva-tools').forEach(t => t.remove());
+      document.querySelectorAll('.meta-admin-canva-box').forEach(b => {
+        delete b.dataset.metaAdminCanva;
+        b.classList.remove('meta-admin-canva-box');
       });
     }
 
@@ -378,6 +510,11 @@
       clone.querySelectorAll('[contenteditable]').forEach(el => {
         el.removeAttribute('contenteditable');
         el.classList.remove('meta-admin-editable-highlight');
+      });
+      clone.querySelectorAll('.meta-admin-canva-tools').forEach(t => t.remove());
+      clone.querySelectorAll('.meta-admin-canva-box').forEach(b => {
+        delete b.dataset.metaAdminCanva;
+        b.classList.remove('meta-admin-canva-box');
       });
 
       const fullHtml = '<!DOCTYPE html>\n' + clone.outerHTML;
@@ -420,7 +557,7 @@
           }
         });
 
-        if (!getRes.ok) throw new Error('Konnte Datei-SHA von GitHub nicht abrufen.');
+        if (!getRes.ok) throw new Error('Konnte Datei-SHA von GitHub nicht abrufen (HTTP ' + getRes.status + '). Bitte Token-Rechte prüfen.');
         const getData = await getRes.json();
         const sha = getData.sha;
 
@@ -431,18 +568,18 @@
         for (let i = 0; i < bytes.byteLength; i++) {
           binary += String.fromCharCode(bytes[i]);
         }
-        const b64Content = btoa(binary);
+        const b64 = btoa(binary);
 
         const putRes = await fetch(apiUrl, {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/vnd.github.v3+json'
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: `meta-admin: Inline-Update via MetaAdminSDK (${new Date().toLocaleString('de-DE')})`,
-            content: b64Content,
+            message: `meta-admin: Update ${this.config.filePath} by ${this.getUser().email || 'Michi/LLC'} (${new Date().toLocaleString('de-DE')})`,
+            content: b64,
             sha: sha,
             branch: this.config.branch
           })
@@ -450,24 +587,21 @@
 
         if (!putRes.ok) {
           const errData = await putRes.json();
-          throw new Error(errData.message || 'GitHub Commit fehlgeschlagen.');
+          throw new Error(errData.message || 'GitHub Sync fehlgeschlagen');
         }
 
-        alert('✓ Änderungen wurden erfolgreich auf GitHub gespeichert und bereitgestellt.');
+        alert('✓ Erfolgreich auf GitHub & live synchronisiert!');
       } catch (err) {
-        console.error('MetaAdminSDK Sync Error:', err);
         alert('Fehler beim Synchronisieren: ' + err.message);
+        document.getElementById('meta-admin-modal').style.display = 'flex';
       }
     }
   }
 
-  global.MetaAdminSDK = MetaAdminSDK;
+  window.MetaAdminSDK = MetaAdminSDK;
 
+  // Auto-boot if included as standalone script
   if (typeof window !== 'undefined') {
-    window.addEventListener('DOMContentLoaded', () => {
-      if (!window.__metaAdminInstance) {
-        window.__metaAdminInstance = new MetaAdminSDK();
-      }
-    });
+    window.metaAdmin = new MetaAdminSDK();
   }
-})(typeof window !== 'undefined' ? window : this);
+})(window, document);
