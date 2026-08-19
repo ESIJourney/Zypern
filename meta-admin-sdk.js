@@ -548,16 +548,23 @@
       }
 
       try {
-        const apiUrl = `https://api.github.com/repos/${this.config.repoOwner}/${this.config.repoName}/contents/${this.config.filePath}`;
+        const filePath = window.location.pathname.split('/').filter(Boolean).pop() || this.config.filePath || 'journey.html';
+        const apiUrl = `https://api.github.com/repos/${this.config.repoOwner}/${this.config.repoName}/contents/${filePath}`;
         
-        const getRes = await fetch(apiUrl + `?ref=${this.config.branch}`, {
+        // Always fetch fresh SHA bypassing browser cache
+        const getRes = await fetch(apiUrl + `?ref=${this.config.branch}&_t=${Date.now()}`, {
+          cache: 'no-store',
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/vnd.github.v3+json'
           }
         });
 
-        if (!getRes.ok) throw new Error('Konnte Datei-SHA von GitHub nicht abrufen (HTTP ' + getRes.status + '). Bitte Token-Rechte prüfen.');
+        if (!getRes.ok) {
+          const getErr = await getRes.json().catch(() => ({}));
+          throw new Error('Konnte Datei von GitHub nicht abrufen (HTTP ' + getRes.status + '): ' + (getErr.message || ''));
+        }
+        
         const getData = await getRes.json();
         const sha = getData.sha;
 
@@ -578,7 +585,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: `meta-admin: Update ${this.config.filePath} by ${this.getUser().email || 'Michi/LLC'} (${new Date().toLocaleString('de-DE')})`,
+            message: `meta-admin: Update ${filePath} by ${this.getUser().email || 'Michi (Exitstrategy LLC)'} (${new Date().toLocaleString('de-DE')})`,
             content: b64,
             sha: sha,
             branch: this.config.branch
@@ -586,8 +593,8 @@
         });
 
         if (!putRes.ok) {
-          const errData = await putRes.json();
-          throw new Error(errData.message || 'GitHub Sync fehlgeschlagen');
+          const errData = await putRes.json().catch(() => ({}));
+          throw new Error(errData.message || 'GitHub Sync fehlgeschlagen (HTTP ' + putRes.status + ')');
         }
 
         alert('✓ Erfolgreich auf GitHub & live synchronisiert!');
