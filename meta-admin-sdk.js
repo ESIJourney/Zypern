@@ -399,7 +399,7 @@
         errBox.style.display = 'none';
         const email = document.getElementById('meta-admin-email').value.trim();
         const password = document.getElementById('meta-admin-password').value.trim();
-        const pat = patInput.value.trim();
+        const pat = patInput.value.trim().replace(/^Bearer\s+/i, "").replace(/^token\s+/i, "");
 
         if (pat) {
           localStorage.setItem(this.config.githubTokenStorageKey, pat);
@@ -773,7 +773,7 @@
         const getRes = await fetch(apiUrl + `?ref=${this.config.branch}&_t=${Date.now()}`, {
           cache: 'no-store',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `token ${token.trim()}`,
             'Accept': 'application/vnd.github.v3+json'
           }
         });
@@ -798,7 +798,7 @@
         const putRes = await fetch(apiUrl, {
           method: 'PUT',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `token ${token.trim()}`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
           },
