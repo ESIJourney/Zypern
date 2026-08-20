@@ -5,14 +5,13 @@
  * Capabilities:
  * - 100% Comprehensive Coverage: Every text leaf, paragraph, heading, list item, badge, table cell,
  *   and pricing/condition block is fully contenteditable.
- * - Deep Recursive Editable Scanner: Targets all semantic elements including <li>, <td>, <th>, <strong>, <span>, <a>, <p>, <h1-h6>, <div> leaves.
- * - Smart Canva Architecture:
- *    • Parent Canva (Cards, Pricing Cards, Feature Boxes, Testimonials, Condition Cards, Bank Cards, Timeline Items)
- *    • Sub-Canva (List items, pricing bullets, inclusive/exclusive rows, booking rules, table rows)
- *    • Auto-reflow (no empty gaps; sibling blocks smoothly collapse upwards)
- *    • Duplicate & Insert Below: Duplicated parent canva or sub-row is inserted cleanly right beneath
- *    • Delete: Direct deletion with auto-reordering
- *    • Reorder: ⬆️ / ⬇️
+ * - Robust Event Handling: Direct button click listeners (no delegation bubbling issues)
+ * - Safe Canva Targeting: Excludes document root wrappers (body, .wrap, main) from being mistakenly treated as canva boxes
+ * - Intelligent Sub-Canva: List items, table rows, paragraphs inside cards
+ * - Auto-reflow (no empty gaps; sibling blocks smoothly collapse upwards)
+ * - Duplicate & Insert Below: Duplicated parent canva or sub-row is inserted cleanly right beneath
+ * - Delete: Direct deletion with auto-reordering
+ * - Reorder: ⬆️ / ⬇️ (smart sibling re-ordering that skips meta-admin toolbars)
  * - Cache-Busting Direct GitHub GitOps Sync (Auto-Commit & Auto-Push with SHA verification)
  */
 
@@ -31,20 +30,20 @@
         branch: 'main',
         filePath: window.location.pathname.split('/').filter(Boolean).pop() || 'journey.html',
         
-        // Parent Canva / Card Containers
+        // Parent Canva / Card Containers (Explicitly scoped, never root containers)
         canvaSelectors: [
+          '.card',
           '.pricing-card',
           '.outcome-card',
           '.timeline-item',
           '.target-box',
           '.partner-card',
           '.faq-item',
-          '.card',
           '.testimonial-card',
           '.dd-card',
           '.pricing-note',
-          'div[style*="grid-template-columns"] > div',
-          '.cards-grid > div'
+          '.cards-grid > div',
+          '.dd-grid > div'
         ],
 
         // Sub-Canva Elements (Individual Rows, Bullets, Rules, Table Rows)
@@ -52,7 +51,6 @@
           'ul > li',
           'ol > li',
           '.pricing-features li',
-          '.timeline-desc',
           'table tbody tr'
         ],
 
@@ -196,7 +194,7 @@
           }
           .meta-admin-canva-box {
             position: relative;
-            outline: 2px solid rgba(56, 189, 248, 0.6) !important;
+            outline: 2px solid rgba(56, 189, 248, 0.7) !important;
             outline-offset: 4px !important;
             transition: all 0.2s ease;
           }
@@ -210,16 +208,17 @@
           }
           .meta-admin-canva-tools {
             position: absolute;
-            top: -32px;
+            top: -34px;
             right: 8px;
             z-index: 10000;
             display: flex;
             gap: 4px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid rgba(56, 189, 248, 0.5);
+            background: #090d16;
+            border: 1px solid #38bdf8;
             border-radius: 6px;
             padding: 3px 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+            user-select: none;
           }
           .meta-admin-sub-tools {
             position: absolute;
@@ -228,47 +227,53 @@
             z-index: 10005;
             display: none;
             gap: 2px;
-            background: rgba(15, 23, 42, 0.98);
-            border: 1px solid rgba(245, 158, 11, 0.6);
+            background: #090d16;
+            border: 1px solid #f59e0b;
             border-radius: 4px;
             padding: 2px 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            user-select: none;
           }
           .meta-admin-sub-canva:hover .meta-admin-sub-tools,
           .meta-admin-sub-canva:focus-within .meta-admin-sub-tools {
             display: flex;
           }
           .meta-admin-tool-btn {
-            background: transparent;
-            border: none;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             color: #38bdf8;
             font-size: 11px;
             font-weight: 700;
             cursor: pointer;
-            padding: 2px 5px;
+            padding: 3px 6px;
             border-radius: 4px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 2px;
+            justify-content: center;
+            line-height: 1;
+            transition: all 0.15s ease;
           }
           .meta-admin-tool-btn:hover {
-            background: rgba(56, 189, 248, 0.2);
-            color: #fff;
+            background: #38bdf8;
+            color: #0f172a;
           }
           .meta-admin-tool-btn.sub-btn {
             color: #fbbf24;
+            border-color: rgba(245, 158, 11, 0.4);
             font-size: 10px;
-            padding: 1px 4px;
+            padding: 2px 5px;
           }
           .meta-admin-tool-btn.sub-btn:hover {
-            background: rgba(245, 158, 11, 0.25);
-            color: #fff;
+            background: #fbbf24;
+            color: #0f172a;
           }
           .meta-admin-tool-btn.danger {
             color: #f87171;
+            border-color: rgba(248, 113, 113, 0.4);
           }
           .meta-admin-tool-btn.danger:hover {
-            background: rgba(248, 113, 113, 0.2);
+            background: #ef4444;
+            color: #fff;
           }
           #meta-admin-floating-bar {
             position: fixed;
@@ -335,9 +340,9 @@
               </div>
 
               <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
-                ✓ <strong>100% Aller Texte &amp; Listen:</strong> Anklicken &amp; direkt bearbeiten (Überschriften, Inklusiv-/Exklusivleistungen, Konditionen, Fristen, Bankdaten).<br>
-                ✓ <strong>Große Boxen:</strong> Mit <strong>[+ Canva duplizieren]</strong> oder <strong>[🗑️ Löschen]</strong> verwalten.<br>
-                ✓ <strong>Sub-Canva (Zeilen &amp; Listenpunkte):</strong> Mit <strong>[➕ Zeile]</strong> direkt darunter einfügen oder mit <strong>[✕]</strong> löschen (restliche Elemente rücken nahtlos nach oben auf).
+                ✓ <strong>Texte &amp; Paragraphen:</strong> Direkt anklicken und editieren.<br>
+                ✓ <strong>Canva-Boxen:</strong> Mit <strong>[+ Canva duplizieren]</strong> duplizieren, mit <strong>[⬆️]</strong> / <strong>[⬇️]</strong> verschieben oder mit <strong>[🗑️ Löschen]</strong> entfernen.<br>
+                ✓ <strong>Sub-Canva (Listen &amp; Zeilen):</strong> Mit <strong>[➕ Zeile]</strong> darunter einfügen oder mit <strong>[✕]</strong> löschen.
               </p>
 
               <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -457,6 +462,7 @@
     }
 
     makeElementEditable(el) {
+      if (!el || el.nodeType !== Node.ELEMENT_NODE) return;
       if (el.closest('#meta-admin-sdk-root') || el.closest('script, style, svg, pre, code')) return;
       if (el.classList.contains('meta-admin-canva-tools') || el.classList.contains('meta-admin-sub-tools')) return;
 
@@ -476,7 +482,7 @@
       this.isEditing = true;
       document.getElementById('meta-admin-floating-bar').style.display = 'flex';
 
-      // 1. Universal Text In-Place Editing (Headers, Paragraphs, Spans, Links, Strong, Li, Labels, Div Leaves)
+      // 1. Universal Text In-Place Editing
       const allElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, strong, em, b, i, li, th, td, label, div, button.btn');
       allElements.forEach(el => {
         if (el.closest('#meta-admin-sdk-root') || el.closest('script, style, svg, pre, code')) return;
@@ -491,16 +497,16 @@
         }
       });
 
-      // 2. Parent Canva Boxes (Cards, Pricing, Containers)
+      // 2. Parent Canva Boxes
       this.config.canvaSelectors.forEach(sel => {
         document.querySelectorAll(sel).forEach(box => {
-          if (!box.closest('#meta-admin-sdk-root')) {
+          if (!box.closest('#meta-admin-sdk-root') && !['BODY', 'HTML', 'MAIN'].includes(box.tagName) && !box.classList.contains('wrap') && !box.classList.contains('container')) {
             this.attachCanvaTools(box);
           }
         });
       });
 
-      // 3. Sub-Canva Elements (All List Items, Feature Bullets, Table Rows)
+      // 3. Sub-Canva Elements
       this.config.subCanvaSelectors.forEach(sel => {
         document.querySelectorAll(sel).forEach(subEl => {
           if (!subEl.closest('#meta-admin-sdk-root')) {
@@ -517,55 +523,89 @@
 
       const tools = document.createElement('div');
       tools.className = 'meta-admin-canva-tools';
-      tools.innerHTML = `
-        <button class="meta-admin-tool-btn" data-act="dup" title="Dieses Canva-Paket duplizieren">+ Canva duplizieren</button>
-        <button class="meta-admin-tool-btn" data-act="up" title="Nach oben/links">⬆️</button>
-        <button class="meta-admin-tool-btn" data-act="down" title="Nach unten/rechts">⬇️</button>
-        <button class="meta-admin-tool-btn danger" data-act="del" title="Dieses Canva-Paket löschen">🗑️ Löschen</button>
-      `;
+      tools.setAttribute('contenteditable', 'false');
+      
+      const btnDup = document.createElement('button');
+      btnDup.className = 'meta-admin-tool-btn';
+      btnDup.title = 'Dieses Canva-Paket duplizieren';
+      btnDup.textContent = '+ Canva duplizieren';
 
-      tools.addEventListener('click', (e) => {
-        e.stopPropagation();
+      const btnUp = document.createElement('button');
+      btnUp.className = 'meta-admin-tool-btn';
+      btnUp.title = 'Nach oben verschieben';
+      btnUp.textContent = '⬆️';
+
+      const btnDown = document.createElement('button');
+      btnDown.className = 'meta-admin-tool-btn';
+      btnDown.title = 'Nach unten verschieben';
+      btnDown.textContent = '⬇️';
+
+      const btnDel = document.createElement('button');
+      btnDel.className = 'meta-admin-tool-btn danger';
+      btnDel.title = 'Dieses Canva-Paket löschen';
+      btnDel.textContent = '🗑️ Löschen';
+
+      btnDup.onclick = (e) => {
         e.preventDefault();
-        const act = e.target.closest('button')?.dataset.act;
-        if (!act) return;
+        e.stopPropagation();
+        
+        const clone = box.cloneNode(true);
+        clone.querySelectorAll('.meta-admin-canva-tools, .meta-admin-sub-tools').forEach(t => t.remove());
+        delete clone.dataset.metaAdminCanva;
+        clone.querySelectorAll('[data-meta-admin-sub]').forEach(s => delete s.dataset.metaAdminSub);
+        clone.classList.remove('meta-admin-canva-box');
 
-        if (act === 'dup') {
-          const clone = box.cloneNode(true);
-          clone.querySelectorAll('.meta-admin-canva-tools, .meta-admin-sub-tools').forEach(t => t.remove());
-          delete clone.dataset.metaAdminCanva;
-          clone.querySelectorAll('[data-meta-admin-sub]').forEach(s => delete s.dataset.metaAdminSub);
-          clone.classList.remove('meta-admin-canva-box');
+        box.parentNode.insertBefore(clone, box.nextSibling);
+        this.attachCanvaTools(clone);
 
-          box.parentNode.insertBefore(clone, box.nextSibling);
-          this.attachCanvaTools(clone);
+        // Attach sub tools and editability inside clone
+        this.config.subCanvaSelectors.forEach(sel => {
+          clone.querySelectorAll(sel).forEach(s => this.attachSubCanvaTools(s));
+        });
+        clone.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, strong, em, b, i, li, th, td, label, div').forEach(el => {
+          const hasDirectText = Array.from(el.childNodes).some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
+          if (['H1','H2','H3','H4','H5','H6','P','SPAN','A','STRONG','EM','B','I','LI','TH','TD','LABEL'].includes(el.tagName) || (el.tagName === 'DIV' && (el.children.length === 0 || hasDirectText))) {
+            this.makeElementEditable(el);
+          }
+        });
+      };
 
-          // Attach sub tools and editability inside clone
-          this.config.subCanvaSelectors.forEach(sel => {
-            clone.querySelectorAll(sel).forEach(s => this.attachSubCanvaTools(s));
-          });
-          clone.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, strong, em, b, i, li, th, td, label, div').forEach(el => {
-            const hasDirectText = Array.from(el.childNodes).some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
-            if (['H1','H2','H3','H4','H5','H6','P','SPAN','A','STRONG','EM','B','I','LI','TH','TD','LABEL'].includes(el.tagName) || (el.tagName === 'DIV' && (el.children.length === 0 || hasDirectText))) {
-              this.makeElementEditable(el);
-            }
-          });
-        } else if (act === 'del') {
-          if (confirm('Möchtest du dieses gesamte Canva-Paket wirklich löschen? Die restlichen Boxen rücken automatisch nach.')) {
-            box.remove();
-          }
-        } else if (act === 'up') {
-          const prev = box.previousElementSibling;
-          if (prev && !prev.classList.contains('meta-admin-canva-tools')) {
-            box.parentNode.insertBefore(box, prev);
-          }
-        } else if (act === 'down') {
-          const next = box.nextElementSibling;
-          if (next) {
-            box.parentNode.insertBefore(next, box);
-          }
+      btnUp.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        let prev = box.previousElementSibling;
+        while (prev && (prev.classList.contains('meta-admin-canva-tools') || prev.id === 'meta-admin-sdk-root')) {
+          prev = prev.previousElementSibling;
         }
-      });
+        if (prev && prev.parentNode === box.parentNode) {
+          box.parentNode.insertBefore(box, prev);
+        }
+      };
+
+      btnDown.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        let next = box.nextElementSibling;
+        while (next && (next.classList.contains('meta-admin-canva-tools') || next.id === 'meta-admin-sdk-root')) {
+          next = next.nextElementSibling;
+        }
+        if (next && next.parentNode === box.parentNode) {
+          box.parentNode.insertBefore(next, box);
+        }
+      };
+
+      btnDel.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (confirm('Möchtest du dieses gesamte Canva-Paket wirklich löschen?')) {
+          box.remove();
+        }
+      };
+
+      tools.appendChild(btnDup);
+      tools.appendChild(btnUp);
+      tools.appendChild(btnDown);
+      tools.appendChild(btnDel);
 
       box.appendChild(tools);
     }
@@ -582,42 +622,74 @@
       const tools = document.createElement('div');
       tools.className = 'meta-admin-sub-tools';
       tools.setAttribute('contenteditable', 'false');
-      tools.innerHTML = `
-        <button class="meta-admin-tool-btn sub-btn" data-sub-act="dup" title="Diese Zeile darunter duplizieren">➕ Zeile</button>
-        <button class="meta-admin-tool-btn sub-btn" data-sub-act="up" title="Nach oben">▲</button>
-        <button class="meta-admin-tool-btn sub-btn" data-sub-act="down" title="Nach unten">▼</button>
-        <button class="meta-admin-tool-btn sub-btn danger" data-sub-act="del" title="Diese Zeile entfernen">✕</button>
-      `;
+      
+      const btnDup = document.createElement('button');
+      btnDup.className = 'meta-admin-tool-btn sub-btn';
+      btnDup.title = 'Diese Zeile darunter duplizieren';
+      btnDup.textContent = '➕ Zeile';
 
-      tools.addEventListener('click', (e) => {
-        e.stopPropagation();
+      const btnUp = document.createElement('button');
+      btnUp.className = 'meta-admin-tool-btn sub-btn';
+      btnUp.title = 'Nach oben';
+      btnUp.textContent = '▲';
+
+      const btnDown = document.createElement('button');
+      btnDown.className = 'meta-admin-tool-btn sub-btn';
+      btnDown.title = 'Nach unten';
+      btnDown.textContent = '▼';
+
+      const btnDel = document.createElement('button');
+      btnDel.className = 'meta-admin-tool-btn sub-btn danger';
+      btnDel.title = 'Diese Zeile entfernen';
+      btnDel.textContent = '✕';
+
+      btnDup.onclick = (e) => {
         e.preventDefault();
-        const act = e.target.closest('button')?.dataset.subAct;
-        if (!act) return;
+        e.stopPropagation();
+        const clone = subEl.cloneNode(true);
+        const oldTools = clone.querySelector('.meta-admin-sub-tools');
+        if (oldTools) oldTools.remove();
+        delete clone.dataset.metaAdminSub;
+        clone.classList.remove('meta-admin-sub-canva');
 
-        if (act === 'dup') {
-          const clone = subEl.cloneNode(true);
-          const oldTools = clone.querySelector('.meta-admin-sub-tools');
-          if (oldTools) oldTools.remove();
-          delete clone.dataset.metaAdminSub;
-          clone.classList.remove('meta-admin-sub-canva');
+        subEl.parentNode.insertBefore(clone, subEl.nextSibling);
+        this.attachSubCanvaTools(clone);
+      };
 
-          subEl.parentNode.insertBefore(clone, subEl.nextSibling);
-          this.attachSubCanvaTools(clone);
-        } else if (act === 'del') {
-          subEl.remove();
-        } else if (act === 'up') {
-          const prev = subEl.previousElementSibling;
-          if (prev) {
-            subEl.parentNode.insertBefore(subEl, prev);
-          }
-        } else if (act === 'down') {
-          const next = subEl.nextElementSibling;
-          if (next) {
-            subEl.parentNode.insertBefore(next, subEl);
-          }
+      btnUp.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        let prev = subEl.previousElementSibling;
+        while (prev && prev.classList.contains('meta-admin-sub-tools')) {
+          prev = prev.previousElementSibling;
         }
-      });
+        if (prev && prev.parentNode === subEl.parentNode) {
+          subEl.parentNode.insertBefore(subEl, prev);
+        }
+      };
+
+      btnDown.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        let next = subEl.nextElementSibling;
+        while (next && next.classList.contains('meta-admin-sub-tools')) {
+          next = next.nextElementSibling;
+        }
+        if (next && next.parentNode === subEl.parentNode) {
+          subEl.parentNode.insertBefore(next, subEl);
+        }
+      };
+
+      btnDel.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        subEl.remove();
+      };
+
+      tools.appendChild(btnDup);
+      tools.appendChild(btnUp);
+      tools.appendChild(btnDown);
+      tools.appendChild(btnDel);
 
       subEl.appendChild(tools);
     }
