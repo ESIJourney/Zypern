@@ -7,7 +7,7 @@
  *   and pricing/condition block is fully contenteditable.
  * - Robust Event Handling: Direct button click listeners (no delegation bubbling issues)
  * - Safe Canva Targeting: Excludes document root wrappers (body, .wrap, main) from being mistakenly treated as canva boxes
- * - Intelligent Sub-Canva: List items, table rows, paragraphs inside cards
+ * - Intelligent Sub-Canva: Every list item (<li>) AND every paragraph (<p>) inside cards has full sub-canva tools (➕ Zeile / ✕ Löschen / ▲ / ▼)
  * - Auto-reflow (no empty gaps; sibling blocks smoothly collapse upwards)
  * - Duplicate & Insert Below: Duplicated parent canva or sub-row is inserted cleanly right beneath
  * - Delete: Direct deletion with auto-reordering
@@ -46,12 +46,16 @@
           '.dd-grid > div'
         ],
 
-        // Sub-Canva Elements (Individual Rows, Bullets, Rules, Table Rows)
+        // Sub-Canva Elements (Individual Rows, Bullets, Rules, Table Rows AND Paragraphs inside Cards)
         subCanvaSelectors: [
           'ul > li',
           'ol > li',
           '.pricing-features li',
-          'table tbody tr'
+          'table tbody tr',
+          '.card > p',
+          '.card > ul > li',
+          '.pricing-note p',
+          '.pricing-note li'
         ],
 
         ...options
@@ -234,8 +238,8 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.7);
             user-select: none;
           }
-          .meta-admin-sub-canva:hover .meta-admin-sub-tools,
-          .meta-admin-sub-canva:focus-within .meta-admin-sub-tools {
+          .meta-admin-sub-canva:hover > .meta-admin-sub-tools,
+          .meta-admin-sub-canva:focus-within > .meta-admin-sub-tools {
             display: flex;
           }
           .meta-admin-tool-btn {
@@ -342,7 +346,7 @@
               <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
                 ✓ <strong>Texte &amp; Paragraphen:</strong> Direkt anklicken und editieren.<br>
                 ✓ <strong>Canva-Boxen:</strong> Mit <strong>[+ Canva duplizieren]</strong> duplizieren, mit <strong>[⬆️]</strong> / <strong>[⬇️]</strong> verschieben oder mit <strong>[🗑️ Löschen]</strong> entfernen.<br>
-                ✓ <strong>Sub-Canva (Listen &amp; Zeilen):</strong> Mit <strong>[➕ Zeile]</strong> darunter einfügen oder mit <strong>[✕]</strong> löschen.
+                ✓ <strong>Sub-Canva (Paragraphen &amp; Listenpunkte):</strong> Mit <strong>[➕ Zeile]</strong> darunter einfügen oder mit <strong>[✕]</strong> sauber löschen.
               </p>
 
               <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -399,7 +403,7 @@
         errBox.style.display = 'none';
         const email = document.getElementById('meta-admin-email').value.trim();
         const password = document.getElementById('meta-admin-password').value.trim();
-        const pat = patInput.value.trim().replace(/^Bearer\s+/i, "").replace(/^token\s+/i, "");
+        const pat = patInput.value.trim().replace(/^Bearer\s+/i, '').replace(/^token\s+/i, '');
 
         if (pat) {
           localStorage.setItem(this.config.githubTokenStorageKey, pat);
@@ -506,7 +510,7 @@
         });
       });
 
-      // 3. Sub-Canva Elements
+      // 3. Sub-Canva Elements (List Items AND Paragraphs in Cards)
       this.config.subCanvaSelectors.forEach(sel => {
         document.querySelectorAll(sel).forEach(subEl => {
           if (!subEl.closest('#meta-admin-sdk-root')) {
