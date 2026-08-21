@@ -3,1138 +3,675 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exclusive Investor Due-Diligence Journey Nordzypern | 09.–16. Oktober 2026</title>
-  <meta name="description" content="8 Tage. Eine persönliche Standortstrategie. Direkter Zugang zu Experten, Projekten und Entscheidern. Nordzypern als Investor fundiert prüfen. Max. 8 Teilnehmer.">
-  <meta name="author" content="Investor Journey Nordzypern — KOMPASS Verein">
-  <meta name="keywords" content="Nordzypern, Investor Journey, Due Diligence, Immobilien, Steuerresidenz, Firmenstrukturierung, Auswandern, Relocation, Villa Adam">
-  <meta property="og:title" content="Exclusive Investor Due-Diligence Journey Nordzypern">
-  <meta property="og:description" content="Keine Verkaufsreise. Eine fundierte Due-Diligence Journey – Chancen, Risiken und konkrete Optionen vor Ort prüfen. 09.–16. Oktober 2026.">
+  <title>EXIT Strategy — Deine Reise in die persönliche & finanzielle Freiheit (Side A)</title>
+  <meta name="description" content="Souveräne Exit-Strategien für Unternehmer, Privatiers und Bürger. Schutz vor bürokratischer Überlastung und Steuerdruck im DACH-Raum.">
+  <meta name="author" content="EXIT Strategy">
+  <meta name="keywords" content="Exit Strategy, Auswandern, Steueroptimierung, Zypern, Nordzypern, Vermögensschutz, Freiheit">
+  <meta property="og:title" content="EXIT Strategy — Wege zur Souveränität">
+  <meta property="og:description" content="Souveräne Exit-Strategien für Unternehmer, Privatiers und Bürger. Finde deinen Weg in die Freiheit.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/cyprus-hero-CTZoR_S4.jpg">
+  <meta property="og:image" content="assets/exit_strategy_hero_bg_a.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="libs/fonts/fonts.css"><!-- F2: selbst ausgeliefert, keine Anfrage an Google -->
   <style>
-    /* Custom Journey Enhancements */
-    .hero-badge-highlight {
-      background: rgba(234, 179, 8, 0.2);
-      border: 1px solid rgba(234, 179, 8, 0.5);
-      color: #fef08a;
-      box-shadow: 0 0 20px rgba(234, 179, 8, 0.15);
+    body {
+      font-family: 'Inter', sans-serif;
     }
-    .outcome-card {
-      background: rgba(12, 18, 32, 0.85);
-      border: 1px solid rgba(212, 175, 55, 0.22);
-      border-radius: 12px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    h1, h2, h3, h4, .logo {
+      font-family: 'Outfit', sans-serif;
     }
-    .outcome-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.12);
-    }
-    .outcome-number {
-      display: inline-flex;
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(234, 179, 8, 0.2);
-      color: #fef08a;
+      justify-content: flex-start;
+      text-align: center;
+      color: var(--primary-fg);
+      overflow: hidden;
+      padding: 120px 1.5rem 80px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: auto 0;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, hsla(220, 45%, 5%, 0.95) 0%, hsla(220, 45%, 12%, 0.8) 100%);
+      z-index: 1;
+    }
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 1;
+    }
+    .glow-dot {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+      filter: blur(40px);
+      z-index: 1;
+      animation: floatGlow 12s infinite alternate ease-in-out;
+    }
+    .glow-dot-1 { top: 20%; left: 10%; }
+    .glow-dot-2 { bottom: 10%; right: 10%; animation-delay: -6s; }
+
+    @keyframes floatGlow {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-40px) scale(1.15); }
+    }
+    .pill {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 1.25rem;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+    .headline-main {
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
       font-weight: 800;
-      font-size: 0.9rem;
-      border: 1px solid rgba(234, 179, 8, 0.4);
-      margin-bottom: 1rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 50%, #f3ece0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .dd-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-    .dd-card {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-    }
-    .dd-card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    .credential-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 0.3rem 0.65rem;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.9);
-      margin: 0.2rem 0.2rem 0.2rem 0;
-    }
-    .disclaimer-box {
-      background: rgba(234, 179, 8, 0.08);
-      border: 1px solid rgba(234, 179, 8, 0.3);
-      border-radius: 12px;
-      padding: 1.25rem 1.75rem;
-      margin-top: 2.5rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.85);
-    }
-    .target-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 768px) {
-      .target-box { grid-template-columns: 1fr; }
-      .cards-grid { grid-template-columns: 1fr !important; }
-      .cards-grid.three-col { grid-template-columns: 1fr !important; }
-      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .headline-main span {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   </style>
 </head>
 <body class="theme-side-a">
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge hero-badge-highlight">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      09. – 16. Oktober 2026 · Girne &amp; Famagusta · Maximal 8 ausgewählte Teilnehmer
-    </div>
-    <h1>Exclusive Investor Due-Diligence Journey nach <span class="gold">Nordzypern</span></h1>
-    <p style="font-size: 1.3rem; max-width: 720px; font-weight: 500; color: #f8fafc; margin-bottom: 0.75rem;">
-      8 Tage. Eine persönliche Standortstrategie. Direkter Zugang zu Experten, Projekten und Entscheidern. Nordzypern nicht nur erleben – sondern als Investor fundiert prüfen.
-    </p>
-    <p style="font-size: 1rem; color: #fef08a; max-width: 680px; margin: 0 auto 2rem; font-weight: 500; background: rgba(0,0,0,0.4); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(234,179,8,0.25);">
-      🛡️ <strong>Keine Verkaufsreise.</strong> Eine Investor Due-Diligence Journey – Chancen, Risiken und konkrete Optionen vor Ort prüfen. Untergebracht in einer Luxusvilla auf 5-Sterne-Niveau (Villa Adam) inkl. Butler- &amp; Hausmädchen-Service sowie Private Executive Transfers.
-    </p>
-    <div class="hero-buttons">
-      <a href="#preise" class="btn btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-        Jetzt Platz sichern
+  <!-- ===== HEADER & NAV ===== -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/kompass_logo.svg" alt="KOMPASS EXIT Strategy Logo">
+        <span>KOMPASS <span style="color: #fef08a; font-weight: 500; font-size: 0.85em;">· EXIT Strategy</span></span>
       </a>
-      <a href="#kontakt" class="btn btn-outline" style="background: rgba(255,255,255,0.08); border-color: rgba(254,240,138,0.6); color: #fef08a;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Kennenlerngespräch anfragen
-      </a>
-      <a href="#outcomes" class="btn btn-outline">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Ergebnisse ansehen
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-value">8</div>
-        <div class="hero-stat-label">Tage Intensiv-Programm</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value">Max. 8</div>
-        <div class="hero-stat-label">Ausgewählte Teilnehmer</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value">5</div>
-        <div class="hero-stat-label">Freiheits-Säulen</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value">5-Sterne-Niveau</div>
-        <div class="hero-stat-label">Villa Adam &amp; Executive Transfer</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WAS DU NACH 8 TAGEN MITNIMMST (OUTCOMES) ===== -->
-<section id="outcomes" style="background: #070a12; color: #ffffff; padding: 5.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Greifbare Ergebnisse
-      </div>
-      <h2 class="section-title">Was du nach 8 Tagen mit nach Hause nimmst</h2>
-      <p class="section-subtitle">Keine unverbindlichen Eindrücke, sondern ein vollständiges, belastbares Fundament für deine persönliche und geschäftliche Zukunftsentscheidung.</p>
-    </div>
-
-    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-      <!-- Outcome 1 -->
-      <div class="outcome-card fade-in">
-        <div class="outcome-number">1</div>
-        <h3 style="font-size: 1.25rem; color: #fef08a; margin-bottom: 0.6rem;">🗺️ Persönliche Standort- &amp; Relocation-Roadmap</h3>
-        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65;">
-          Dein individueller Schritt-für-Schritt Fahrplan für Wohnsitzverlagerung, Aufenthaltsstatus (Residency) und private Lebensgestaltung am Mittelmeer mit klaren Fristen und behördlichen Voraussetzungen.
-        </p>
-      </div>
-
-      <!-- Outcome 2 -->
-      <div class="outcome-card fade-in">
-        <div class="outcome-number">2</div>
-        <h3 style="font-size: 1.25rem; color: #fef08a; margin-bottom: 0.6rem;">⚖️ Internationale Strukturierungsoptionen &amp; Compliance</h3>
-        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65;">
-          Fundiertes Wissen zu Steuerresidenz, Unternehmensformen, Holding- &amp; IP-Architektur sowie rechtssicherer Vermeidung von DACH-Wegzugsbesteuerungsfallen (§ 6 AStG / Entstrickung).
-        </p>
-      </div>
-
-      <!-- Outcome 3 -->
-      <div class="outcome-card fade-in">
-        <div class="outcome-number">3</div>
-        <h3 style="font-size: 1.25rem; color: #fef08a; margin-bottom: 0.6rem;">🏦 Geprüfte Banking- &amp; Expertenkontakte vor Ort</h3>
-        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65;">
-          Direkter persönlicher Zugang zu lizenzierten deutsch- und englischsprachigen Rechtsanwälten, Notaren, Steuerberatern, lokalen Bankern und erprobten Dienstleistern.
-        </p>
-      </div>
-
-      <!-- Outcome 4 -->
-      <div class="outcome-card fade-in">
-        <div class="outcome-number">4</div>
-        <h3 style="font-size: 1.25rem; color: #fef08a; margin-bottom: 0.6rem;">🏢 Immobilien-Shortlist mit ROI- &amp; Risiko-Betrachtung</h3>
-        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65;">
-          Unabhängig vorselektierte Bestands- und Neubau-Projekte inklusive Prüfung von Eigentumstiteln (Pre-74, Exchange), Bauträger-Bonität, realen Mietrenditen und Wiederverkaufschancen.
-        </p>
-      </div>
-
-      <!-- Outcome 5 -->
-      <div class="outcome-card fade-in" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(12, 18, 32, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%); border-color: rgba(234, 179, 8, 0.45);">
-        <div class="outcome-number" style="background: var(--gold); color: #05070a;">5</div>
-        <h3 style="font-size: 1.3rem; color: #fef08a; margin-bottom: 0.6rem;">🤝 1-zu-1 Strategiegespräch &amp; konkreter Umsetzungsplan</h3>
-        <p style="color: rgba(255,255,255,0.9); font-size: 1rem; line-height: 1.7;">
-          Gemeinsames persönliches Abschluss-Review zur Klärung deiner individuellen Fragestellungen: Von Timing und Kapitalfluss über Bankkonten bis hin zur finalen Exit- &amp; Ansiedlungsentscheidung.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FÜNF SÄULEN DER FREIHEIT ===== -->
-<section id="saeulen" style="background: var(--muted-bg);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        Ganzheitliche Souveränität
-      </div>
-      <h2 class="section-title" style="color: #0f172a;">Die 5 Säulen deiner Freiheit</h2>
-      <p class="section-subtitle" style="color: #334155;">Unsere Investor Journey verbindet die fünf Kernbereiche der EXIT Strategy zu einem harmonischen Gesamtkonzept am Mittelmeer.</p>
-    </div>
-    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
-      <!-- Säule 1: Finanzen -->
-      <div class="card fade-in" style="background:#ffffff; border:1px solid #e2e8f0;">
-        <div class="card-icon gold">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 style="color:#0f172a;">1. Finanzen &amp; Steuern</h3>
-        <p style="color:#475569; font-size:0.92rem;">Steuerresidenz, internationale Bankstrukturen, Vermögensschutz und Krypto-Custody in einer attraktiven Jurisdiktion.</p>
-      </div>
-      <!-- Säule 2: Raum -->
-      <div class="card fade-in" style="background:#ffffff; border:1px solid #e2e8f0;">
-        <div class="card-icon blue">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h3 style="color:#0f172a;">2. Raum &amp; Residenz</h3>
-        <p style="color:#475569; font-size:0.92rem;">Wohnsitznahme, geprüfte Premium-Immobilien und ein neuer Lebensmittelpunkt mit über 300 Sonnentagen pro Jahr.</p>
-      </div>
-      <!-- Säule 3: Gesundheit -->
-      <div class="card fade-in" style="background:#ffffff; border:1px solid #e2e8f0;">
-        <div class="card-icon green">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <h3 style="color:#0f172a;">3. Gesundheit &amp; Vitalität</h3>
-        <p style="color:#475569; font-size:0.92rem;">Stressreduktion, mediterranes Mikroklima, gesunde Ernährung und Zugang zu präventiven Gesundheitsimpulsen.</p>
-      </div>
-      <!-- Säule 4: Business -->
-      <div class="card fade-in" style="background:#ffffff; border:1px solid #e2e8f0;">
-        <div class="card-icon orange">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3 style="color:#0f172a;">4. Business &amp; IP</h3>
-        <p style="color:#475569; font-size:0.92rem;">Internationale Unternehmensstrukturierung, Remote Operations, Holding-Strukturen und ein starkes Unternehmer-Netzwerk.</p>
-      </div>
-      <!-- Säule 5: Absicherung -->
-      <div class="card fade-in" style="background:#ffffff; border:1px solid #e2e8f0;">
-        <div class="card-icon" style="background: rgba(56, 189, 248, 0.15); color: #0284c7;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 style="color:#0f172a;">5. Absicherung &amp; Plan B</h3>
-        <p style="color:#475569; font-size:0.92rem;">Flaggen-Theorie in der Praxis, Notfall-Residenzen, Dezentralisierung und geopolitischer Schutz vor DACH-Überregulierung.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== RISIKEN & DUE DILIGENCE (NEU) ===== -->
-<section id="due-diligence" style="background: #090e1a; color: #ffffff; padding: 5.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.35);">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Fundierte Analyse vor Ort
-      </div>
-      <h2 class="section-title">Risiken &amp; Due Diligence: Was wir vor Ort fundiert prüfen</h2>
-      <p class="section-subtitle">Chancen nutzen, Risiken verstehen und absichern. Wir beleuchten alle kritischen Aspekte mit lizenzierten Fachleuten.</p>
-    </div>
-
-    <div class="dd-grid fade-in">
-      <!-- 1. Eigentumstitel -->
-      <div class="dd-card">
-        <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">1. Eigentumstitel &amp; Grundbuch</div>
-        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
-          Detaillierte Analyse der Titelarten: Pre-74 Türkisch, Exchange (Eşdeğer) und TMD. Rolle und völkerrechtliche Anerkennung der <em>Immovable Property Commission (IPC)</em> durch den Europäischen Gerichtshof für Menschenrechte (EGMR).
-        </p>
-      </div>
-
-      <!-- 2. Rechtlicher Rahmen & Bauträger -->
-      <div class="dd-card">
-        <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">2. Bauträger-Bonität &amp; Verträge</div>
-        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
-          Kaufvertrags-Registrierung im Grundbuchamt innerhalb der gesetzlichen 21-Tage-Frist. Behördliche Kaufgenehmigung (Permission to Purchase / PTP), Bauträger-Track-Record und treuhänderische Zahlungsabwicklung.
-        </p>
-      </div>
-
-      <!-- 3. Residency & Status -->
-      <div class="dd-card">
-        <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">3. Residency &amp; Aufenthaltsstatus</div>
-        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
-          Voraussetzungen für befristete und unbefristete Aufenthaltsgenehmigungen für Immobilienkäufer, Familien, Rentner und Unternehmer. Behördliche Nachweise, Gesundheitschecks und Fristen.
-        </p>
-      </div>
-
-      <!-- 4. Steuern & Compliance -->
-      <div class="dd-card">
-        <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">4. Steuern &amp; DACH-Wegzug</div>
-        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
-          Rechtssichere Abmeldung aus dem DACH-Raum, Vermeidung steuerlicher Anknüpfungspunkte, deutsches/österreichisches Außensteuergesetz (§ 6 AStG Wegzugsbesteuerung) sowie lokale Besteuerung und Substanzanforderungen.
-        </p>
-      </div>
-
-      <!-- 5. Banking & Liquidität -->
-      <div class="dd-card">
-        <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">5. Banking, Devisen &amp; Krypto</div>
-        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
-          Praxis der Kontoeröffnung bei lokalen und internationalen Instituten, Krypto-zu-Fiat-Liquidität, grenzüberschreitende Überweisungen und Währungsabsicherung (GBP, EUR, USD, TRY).
-        </p>
-      </div>
-
-      <!-- 6. Exit & Sekundärmarkt -->
-      <div class="dd-card">
-        <div style="font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">6. Exit-Szenarien &amp; Vermietung</div>
-        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
-          Reale Betrachtung von Mietrenditen (Kurzzeit- vs. Langzeitvermietung), Leerstandsrisiken, Kosten für Property Management und Wiederverkaufschancen auf dem internationalen Sekundärmarkt.
-        </p>
-      </div>
-    </div>
-
-    <!-- Disclaimer Box -->
-    <div class="disclaimer-box fade-in">
-      <strong style="color: #fef08a;">Rechtlicher Hinweis:</strong> Sämtliche Vorträge, Analysen und Diskussionen im Rahmen der Journey dienen der allgemeinen Information, Wissensvermittlung und Markt-Orientierung. Eine individuelle rechtliche oder steuerliche Einzelfallberatung erfolgt ausschließlich durch entsprechend qualifizierte und im jeweiligen Fachbereich lizenzierte Partner (Fachanwälte, Steuerberater und Notare vor Ort).
-    </div>
-  </div>
-</section>
-
-<!-- ===== ZIELGRUPPENBLOCK (NEU) ===== -->
-<section id="zielgruppe" style="background: #060911; color: #ffffff; padding: 5rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Teilnehmerprofil
-      </div>
-      <h2 class="section-title">Für wen diese Journey konzipiert ist</h2>
-      <p class="section-subtitle">Eine exklusive Gruppe von maximal 8 Gleichgesinnten, die strategisch vorausdenken und handeln wollen.</p>
-    </div>
-
-    <div class="target-box fade-in">
-      <!-- Ideal geeignet -->
-      <div style="background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.25); border-radius: 12px; padding: 2rem;">
-        <h3 style="color: #86efac; font-size: 1.3rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Ideal geeignet für:
-        </h3>
-        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.95rem; color: rgba(255,255,255,0.9);">
-          <li>✓ <strong>Unternehmer &amp; Selbstständige</strong>, die internationale Strukturen aufbauen und ihre Steuerlast legal optimieren möchten.</li>
-          <li>✓ <strong>Investoren &amp; Privatiers</strong>, die ihr Vermögen geografisch diversifizieren und renditestarke Sachwerte suchen.</li>
-          <li>✓ <strong>Immobilieninvestoren</strong>, die den Markt in Nordzypern vor Ort mit rechtlicher Due Diligence analysieren wollen.</li>
-          <li>✓ <strong>Auswanderungswillige &amp; Familien</strong>, die einen sonnigen, sicheren und lebenswerten Lebensmittelpunkt suchen.</li>
-          <li>✓ <strong>Freiheitsliebende Menschen</strong>, die Wert auf persönliche Souveränität, Diskretion und erstklassiges Networking legen.</li>
-        </ul>
-      </div>
-
-      <!-- Nicht geeignet -->
-      <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 12px; padding: 2rem;">
-        <h3 style="color: #fca5a5; font-size: 1.3rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          Nicht geeignet für:
-        </h3>
-        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.95rem; color: rgba(255,255,255,0.75);">
-          <li>✗ Reine Pauschalurlauber auf der Suche nach einem reinen Hotelaufenthalt.</li>
-          <li>✗ Personen, die auf unrealistische „Über-Nacht-Reich“-Versprechen ohne solide rechtliche Basis hoffen.</li>
-          <li>✗ Teilnehmer ohne ernsthaftes Interesse an fundierter Recherche, Strukturierung oder Investition.</li>
-        </ul>
-        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.88rem; color: #fef08a;">
-          🎯 <em>Durch die Begrenzung auf maximal 8 Teilnehmer stellen wir sicher, dass individuelle Fragestellungen intensiv und vertraulich behandelt werden.</em>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== UNTERKUNFT VILLA ADAM ===== -->
-<section id="unterkunft" style="background: #0b111e; color: #ffffff; padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Exklusive Residenz
-      </div>
-      <h2 class="section-title">Luxusvilla auf 5-Sterne-Niveau (Villa Adam, Esentepe)</h2>
-      <p class="section-subtitle">Wohne während der Journey in der exklusiven Villa Adam direkt am Strand — inkl. privatem Butler, 8-stündigem täglichen Hausmädchen-Service &amp; privatem Infinitypool.</p>
-    </div>
-    
-    <!-- SLIDESHOW GALERIE -->
-    <div class="villa-slideshow-container fade-in" style="margin-bottom: 3.5rem;">
-      <div class="slideshow-main-wrapper" style="position: relative; width: 100%; height: 500px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 25px 35px -10px rgba(0,0,0,0.6); background: #000;">
-        <div class="slides-track" id="villaSlidesTrack" style="display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);">
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-01.jpeg" alt="Villa Adam Infinitypool &amp; Meerblick" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Traumhafter Infinitypool mit direktem Panoramablick auf das Mittelmeer &amp; die Berge</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-02.jpeg" alt="Villa Adam Außenbereich &amp; Terrasse" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Großzügiges Sonnendeck &amp; Loungebereich für Abende im Kreis von Gleichgesinnten</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-03.jpg" alt="Villa Adam Offener Wohnbereich" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Lichtdurchfluteter offener Wohn- &amp; Essbereich mit Luxus-Gourmetküche</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-04.jpeg" alt="Villa Adam Schlafzimmer Suite" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">7 exklusive Suiten mit eigenem en-suite Badezimmer &amp; Meerblick</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-05.jpeg" alt="Villa Adam Panoramalage" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Einzigartige Strand-Bestlage in Esentepe mit Berg- &amp; Meerespanorama</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-06.jpeg" alt="Villa Adam Outdoor Dining" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Perfekt für gemeinsame Mastermind-Dinners &amp; BBQ am Pool</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-07.jpeg" alt="Villa Adam Schlafzimmer Detail" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Höchster Schlafkomfort &amp; stilvolle Einrichtung auf 5-Sterne-Niveau</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-08.jpeg" alt="Villa Adam Badezimmer" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Edle en-suite Marmor-Bäder mit Regenduschen</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-09.jpeg" alt="Villa Adam Pool bei Nacht" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Stimmungsvolle Pool-Beleuchtung für nächtliches Schwimmen</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-10.jpeg" alt="Villa Adam Strandnähe" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Direkter Zugang zum Mittelmeer &amp; erfrischende Meeresbrise</div>
-          </div>
-          <div class="slide" style="min-width: 100%; height: 100%; position: relative;">
-            <img src="assets/villa-adam/villa-adam-11.jpeg" alt="Villa Adam Gesamtanwesen" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="slide-caption">Villa Adam — Dein privates Refugium während der Due-Diligence Journey</div>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <button class="slideshow-btn prev-btn" onclick="moveVillaSlide(-1)" aria-label="Vorheriges Bild">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="slideshow-btn next-btn" onclick="moveVillaSlide(1)" aria-label="Nächstes Bild">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        
-        <div class="slide-counter-badge" id="villaSlideCounter">1 / 11</div>
-      </div>
-
-      <!-- Thumbnails -->
-      <div class="slideshow-thumbnails" id="villaThumbnails">
-        <img src="assets/villa-adam/villa-adam-01.jpeg" class="thumb active" onclick="setVillaSlide(0)" alt="Thumb 1">
-        <img src="assets/villa-adam/villa-adam-02.jpeg" class="thumb" onclick="setVillaSlide(1)" alt="Thumb 2">
-        <img src="assets/villa-adam/villa-adam-03.jpg" class="thumb" onclick="setVillaSlide(2)" alt="Thumb 3">
-        <img src="assets/villa-adam/villa-adam-04.jpeg" class="thumb" onclick="setVillaSlide(3)" alt="Thumb 4">
-        <img src="assets/villa-adam/villa-adam-05.jpeg" class="thumb" onclick="setVillaSlide(4)" alt="Thumb 5">
-        <img src="assets/villa-adam/villa-adam-06.jpeg" class="thumb" onclick="setVillaSlide(5)" alt="Thumb 6">
-        <img src="assets/villa-adam/villa-adam-07.jpeg" class="thumb" onclick="setVillaSlide(6)" alt="Thumb 7">
-        <img src="assets/villa-adam/villa-adam-08.jpeg" class="thumb" onclick="setVillaSlide(7)" alt="Thumb 8">
-        <img src="assets/villa-adam/villa-adam-09.jpeg" class="thumb" onclick="setVillaSlide(8)" alt="Thumb 9">
-        <img src="assets/villa-adam/villa-adam-10.jpeg" class="thumb" onclick="setVillaSlide(9)" alt="Thumb 10">
-        <img src="assets/villa-adam/villa-adam-11.jpeg" class="thumb" onclick="setVillaSlide(10)" alt="Thumb 11">
-      </div>
-    </div>
-
-    <!-- HIGHLIGHTS DETAILS GRID -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;" class="fade-in">
-      <div style="background: rgba(255,255,255,0.06); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fbbf24; display: flex; align-items: center; gap: 0.5rem;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Erstklassiger Service auf 5-Sterne-Niveau
-        </h3>
-        <p style="margin-bottom: 1.25rem; line-height: 1.7; color: #ffffff;">
-          Die <strong style="color: #fef08a;">Villa Adam</strong> kombiniert den Komfort einer Luxusresidenz mit der absoluten Privatsphäre eines eigenen Anwesens. Dein Kopf bleibt frei für Strategie, Due Diligence und Entspannung.
-        </p>
-        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.85rem;">
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <div style="background: rgba(234, 179, 8, 0.25); padding: 0.35rem; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(234, 179, 8, 0.4);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fef08a" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <div>
-              <strong style="color: #fef08a;">Privater Butler &amp; Concierge-Service:</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Dedizierter Ansprechpartner vor Ort für deine persönlichen Wünsche, Getränkeservice, Reservierungen &amp; Tagesplanung.</span>
-            </div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <div style="background: rgba(234, 179, 8, 0.25); padding: 0.35rem; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(234, 179, 8, 0.4);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fef08a" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div>
-              <strong style="color: #fef08a;">Täglicher Reinigungsservice (8 Std./Tag):</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Inkludierter täglicher Service durch unser festes Hausmädchen, Handtuchwechsel alle 3 Tage sowie Frische-Wäscheservice.</span>
-            </div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <div style="background: rgba(234, 179, 8, 0.25); padding: 0.35rem; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(234, 179, 8, 0.4);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fef08a" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
-            </div>
-            <div>
-              <strong style="color: #fef08a;">Pool- &amp; Gartenpflege inklusive:</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Der Infinitypool und die Sonnendecks werden täglich professionell gewartet und gepflegt.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div style="background: rgba(255,255,255,0.06); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fbbf24; display: flex; align-items: center; gap: 0.5rem;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Ausstattung &amp; Mobilität
-        </h3>
-        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.85rem;">
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" style="margin-top: 3px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-            <div>
-              <strong style="color: #fef08a;">7 Suiten mit eigenen en-suite Bädern:</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Maximale Privatsphäre für jeden Teilnehmer in großzügigen Suiten mit eigenem Marmorbad.</span>
-            </div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" style="margin-top: 3px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-            <div>
-              <strong style="color: #fef08a;">Private Executive Transfers:</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Komfortable Flughafen-Transfers und private Fahrten während der gesamten Journey zu allen Terminen und Exkursionen.</span>
-            </div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" style="margin-top: 3px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-            <div>
-              <strong style="color: #fef08a;">Highspeed-WLAN &amp; Arbeitsbereiche:</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Stabiles Highspeed-Internet auf dem gesamten Anwesen für ungestörtes Arbeiten im Freien.</span>
-            </div>
-          </li>
-          <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: #ffffff;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" style="margin-top: 3px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-            <div>
-              <strong style="color: #fef08a;">Fahrräder &amp; Freizeit:</strong><br>
-              <span style="font-size: 0.92rem; color: rgba(255,255,255,0.92);">Kostenlose Fahrräder vor Ort sowie direkter Strandzugang vor der Haustür.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 8-TAGE PROGRAMM ===== -->
-<section id="programm" style="background: var(--muted-bg);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Kuriertes 8-Tage Programm
-      </div>
-      <h2 class="section-title" style="color: #0f172a;">Deine Journey im Detail</h2>
-      <p class="section-subtitle" style="color: #334155;">Ein ausgewogenes Verhältnis aus fundierten Fach-Workshops, Vor-Ort-Besichtigungen, Mastermind-Sessions und entspanntem Networking.</p>
-    </div>
-    <div class="timeline">
-      <!-- Tag 1 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">1</div>
-        <div class="timeline-date">Freitag, 09. Oktober 2026</div>
-        <div class="timeline-title">Anreise, Empfang &amp; Check-in</div>
-        <div class="timeline-desc">Individuelle Ankunft am Flughafen Larnaca (LCA) oder Ercan (ECN) · Empfang durch Private Executive Transfers · Fahrt nach Esentepe · Check-in in der Villa Adam (5-Sterne-Niveau) · Begrüßung durch Concierge &amp; Butler · Exklusives Welcome Dinner am Infinitypool &amp; gegenseitiges Kennenlernen.</div>
-      </div>
-      <!-- Tag 2 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">2</div>
-        <div class="timeline-date">Samstag, 10. Oktober 2026</div>
-        <div class="timeline-title">Famagusta, Geschichte &amp; Marktdynamik</div>
-        <div class="timeline-desc">10:00–13:00 Historische Altstadt Famagusta &amp; wirtschaftliche Entwicklungszonen · 13:00–15:00 Besichtigung der Geisterstadt Varosha (juristischer &amp; politischer Hintergrund) · Nachmittag im Beach Club · Abendessen im traditionellen Restaurant Körfez &amp; informeller Austausch.</div>
-      </div>
-      <!-- Tag 3 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">3</div>
-        <div class="timeline-date">Sonntag, 11. Oktober 2026</div>
-        <div class="timeline-title">Strukturwissen, Steuern &amp; Recht</div>
-        <div class="timeline-desc">09:00–11:00 Vortrag: Aufenthaltsrecht, Meldeverfahren, lokales Banking &amp; Krankenversicherung mit Murat Hansen · Gemeinsames Mittagessen · 14:30–16:30 Workshop: Internationale Steuerresidenz, Holding-Strukturen, Substanzanforderungen &amp; DACH-Wegzug mit Michael Schenk · Traditionelles Meze-Abendessen.</div>
-      </div>
-      <!-- Tag 4 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">4</div>
-        <div class="timeline-date">Montag, 12. Oktober 2026</div>
-        <div class="timeline-title">Marktüberblick, Due Diligence &amp; Immobilien</div>
-        <div class="timeline-desc">Experten-Einführung in den Immobilienmarkt Nordzypern · Villa-Besichtigungen mit Meerblick in Esentepe · Mittagessen am Meer · Besichtigung von Bestands- und ROI-Apartmentprojekten · Optionaler Impuls: Testbasierte Vitalitätsvorsorge &amp; Bio-Hacking mit PENeM.</div>
-      </div>
-      <!-- Tag 5 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">5</div>
-        <div class="timeline-date">Dienstag, 13. Oktober 2026</div>
-        <div class="timeline-title">Fokus Eigentum, Bauträger &amp; Rechtssicherheit</div>
-        <div class="timeline-desc">Besichtigung ausgewählter Neubauprojekte mit Bauträger-Hintergrundgespräch · Prüfung von Vertragsklauseln, Zahlungsplänen &amp; Grundbucheintragungen · Gemeinsames Mittagessen · Persönliche Zwischenberatung &amp; Mastermind Dinner am Pool.</div>
-      </div>
-      <!-- Tag 6 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">6</div>
-        <div class="timeline-date">Mittwoch, 14. Oktober 2026</div>
-        <div class="timeline-title">Girne, Kultur &amp; Lebensqualität</div>
-        <div class="timeline-desc">Frühstück im Bergrestaurant Tahta mit Panoramablick · Erkundung des historischen Hafens und der Altstadt von Girne · Besuch der Festung St. Hilarion Castle · Freie Zeit am Nachmittag für individuelle Erkundungen · Gemeinsames Dinner in Girne.</div>
-      </div>
-      <!-- Tag 7 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">7</div>
-        <div class="timeline-date">Donnerstag, 15. Oktober 2026</div>
-        <div class="timeline-title">1-zu-1 Strategiegespräche &amp; Vertiefung</div>
-        <div class="timeline-desc">Individuelle 1-zu-1 Strategiegespräche mit unseren Experten zur Ausarbeitung deiner persönlichen Roadmap · Optionale Zweitbesichtigungen von favorisierten Objekten oder Kanzleitermine · Zeit zur Erholung am Strand · Feierliches Farewell Dinner.</div>
-      </div>
-      <!-- Tag 8 -->
-      <div class="timeline-item fade-in">
-        <div class="timeline-marker">8</div>
-        <div class="timeline-date">Freitag, 16. Oktober 2026</div>
-        <div class="timeline-title">Abreise &amp; Umsetzungsfahrplan</div>
-        <div class="timeline-desc">Gemeinsames Abschlussfrühstück · Übergabe der konsolidierten Kontakte und Unterlagen · Private Executive Transfers zu den Flughäfen Larnaca (LCA) oder Ercan (ECN) · Start deines persönlichen Umsetzungsplans.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== HOSTS & EXPERTEN VOR ORT ===== -->
-<section id="partner" style="background: #070b14; color: #ffffff; padding: 5.5rem 0;">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Fachexpertise &amp; Begleitung
-      </div>
-      <h2 class="section-title">Deine Hosts &amp; Fachexperten vor Ort</h2>
-      <p class="section-subtitle">Erprobte Praktiker mit tiefem Netzwerk und jahrelanger Erfahrung in Nordzypern begleiten dich durch die gesamte Woche.</p>
-    </div>
-
-    <!-- Experten Grid -->
-    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem;">
-      <!-- Michael Fuchs -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 12px; overflow: hidden;">
-        <div class="partner-body" style="padding: 1.75rem;">
-          <h3 style="font-size: 1.3rem; color: #fef08a; margin-bottom: 0.25rem;">Michael Fuchs</h3>
-          <div class="partner-role" style="color: #38bdf8; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">Host · Begleitung &amp; Strategie</div>
-          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">
-            Experte für Vermögensabsicherung, Financial Engineering und ganzheitliche Lebensgestaltung mit langjähriger Vor-Ort-Erfahrung auf Zypern.
-          </p>
-          <div>
-            <span class="credential-pill">🛡️ Vermögensstrukturierung</span>
-            <span class="credential-pill">📍 Zypern-Netzwerk seit 2021</span>
-            <span class="credential-pill">👥 Über 50 begleitete Relocations</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Marcel Tammer -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 12px; overflow: hidden;">
-        <div class="partner-body" style="padding: 1.75rem;">
-          <h3 style="font-size: 1.3rem; color: #fef08a; margin-bottom: 0.25rem;">Marcel Tammer</h3>
-          <div class="partner-role" style="color: #38bdf8; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">Host · Investor Relations &amp; Due Diligence</div>
-          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">
-            Spezialisiert auf Projekt-Due-Diligence, Marktanalysen, Vor-Ort-Koordination und die Betreuung anspruchsvoller Investoren.
-          </p>
-          <div>
-            <span class="credential-pill">🔍 Bauträger- &amp; Marktaudits</span>
-            <span class="credential-pill">🤝 Investor Onboarding</span>
-            <span class="credential-pill">📊 Reale Renditeberechnungen</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Michael Schenk -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 12px; overflow: hidden;">
-        <div class="partner-body" style="padding: 1.75rem;">
-          <h3 style="font-size: 1.3rem; color: #fef08a; margin-bottom: 0.25rem;">Michael Schenk</h3>
-          <div class="partner-role" style="color: #38bdf8; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">Experte · Internationale Strukturen &amp; Compliance</div>
-          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">
-            COO-as-a-Service und Spezialist für internationale Steuerresidenz, Holding-Architekturen, Substanzaufbau und operative Umsetzung.
-          </p>
-          <div>
-            <span class="credential-pill">⚖️ Internationale Firmenstrukturen</span>
-            <span class="credential-pill">🏢 Substanz &amp; Betriebsstätten</span>
-            <span class="credential-pill">🌐 DACH-Wegzug &amp; Compliance</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Murat Hansen -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 12px; overflow: hidden;">
-        <div class="partner-body" style="padding: 1.75rem;">
-          <h3 style="font-size: 1.3rem; color: #fef08a; margin-bottom: 0.25rem;">Murat Hansen</h3>
-          <div class="partner-role" style="color: #38bdf8; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">Experte · Lokale Administration &amp; Banking</div>
-          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem;">
-            Langjähriger Resident in Nordzypern mit exzellenten Kontakten zu lokalen Behörden, Bankinstituten, Grundbuchämtern und Notaren.
-          </p>
-          <div>
-            <span class="credential-pill">🛂 Residency &amp; Behördenprozesse</span>
-            <span class="credential-pill">🏦 Lokale Bankbeziehungen</span>
-            <span class="credential-pill">🗣️ Zweisprachig (DE / TR)</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Partner Grid -->
-    <div class="cards-grid three-col" style="margin-top: 2rem;">
-      <!-- Karox Homes -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;">
-        <div class="partner-image" style="height: 180px; overflow: hidden;">
-          <img src="assets/cyprus-property-hzWDda5L.jpg" alt="Karox Homes - Immobilienpartner" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-        </div>
-        <div class="partner-body" style="padding: 1.5rem;">
-          <h3 style="font-size: 1.2rem; color: #ffffff;">Karox Homes</h3>
-          <div class="partner-role" style="color: #38bdf8; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Immobilienpartner Nordzypern</div>
-          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 1rem;">
-            Geprüfte Immobilien von Kyrenia bis Famagusta — Unterstützung bei Marktanalysen, Besichtigungen und Bauqualitätsprüfungen.
-          </p>
-          <a href="https://karoxhomes.com/" target="_blank" rel="noopener" class="partner-link" style="color: #fef08a; font-weight: 600; font-size: 0.88rem;">karoxhomes.com →</a>
-        </div>
-      </div>
-
-      <!-- Michael Schenk Consulting -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;">
-        <div class="partner-image" style="height: 180px; overflow: hidden;">
-          <img src="assets/investment-partnership-D39ddAcP.jpg" alt="Michael Schenk - Consulting" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-        </div>
-        <div class="partner-body" style="padding: 1.5rem;">
-          <h3 style="font-size: 1.2rem; color: #ffffff;">Michael Schenk Consulting</h3>
-          <div class="partner-role" style="color: #38bdf8; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Strukturierung &amp; COO-as-a-Service</div>
-          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 1rem;">
-            Strategische Begleitung beim Aufbau internationaler Unternehmens- und Holdingstrukturen mit klarem Fokus auf Rechtssicherheit.
-          </p>
-          <a href="https://schenkmichael.com/" target="_blank" rel="noopener" class="partner-link" style="color: #fef08a; font-weight: 600; font-size: 0.88rem;">schenkmichael.com →</a>
-        </div>
-      </div>
-
-      <!-- PENeM -->
-      <div class="partner-card fade-in" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;">
-        <div class="partner-image partner-image-placeholder" style="height: 180px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03);">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.5" opacity=".7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <div class="partner-body" style="padding: 1.5rem;">
-          <h3 style="font-size: 1.2rem; color: #ffffff;">PENeM</h3>
-          <div class="partner-role" style="color: #22c55e; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Optionaler Wellness- &amp; Vitalitätspartner</div>
-          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 1rem;">
-            Testbasierte Vorsorge- und Mikronährstoff-Konzepte zur Steigerung der persönlichen Vitalität. 15% Rabatt für Journey-Teilnehmer.
-          </p>
-          <a href="https://penem.org/" target="_blank" rel="noopener" class="partner-link" style="color: #fef08a; font-weight: 600; font-size: 0.88rem;">penem.org →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SOCIAL PROOF & ERFAHRUNGSWERTE (NEU) ===== -->
-<section id="social-proof" style="background: #050810; color: #ffffff; padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Erfahrungswerte &amp; Stimmen
-      </div>
-      <h2 class="section-title">Ergebnisse &amp; Einblicke früherer Teilnehmer</h2>
-      <p class="section-subtitle">Echte Erfahrungen von Unternehmern und Investoren, die ihren Weg in die Unabhängigkeit bereits gegangen sind.</p>
-    </div>
-
-    <div class="cards-grid three-col fade-in">
-      <!-- Testimonial 1 -->
-      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div style="color: #fef08a; font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
-          <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.25rem;">
-            „Die Woche war der Wendepunkt. Statt stundenlang im Internet zu recherchieren, saßen wir direkt mit Anwälten und Bauträgern am Tisch. Meine Holding-Struktur und der Mietkauf standen innerhalb von 60 Tagen.“
-          </p>
-        </div>
-        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
-          <div style="font-weight: 700; color: #ffffff;">Thomas K.</div>
-          <div style="font-size: 0.82rem; color: #38bdf8;">E-Commerce Unternehmer (ehem. München)</div>
-        </div>
-      </div>
-
-      <!-- Testimonial 2 -->
-      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div style="color: #fef08a; font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
-          <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.25rem;">
-            „Besonders die offene Ansprache der Risiken (Eigentumstitel, Bauträger-Garantien) hat mich überzeugt. Keine Verkaufs-Show, sondern knallharte Fakten und erstklassige Betreuung.“
-          </p>
-        </div>
-        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
-          <div style="font-weight: 700; color: #ffffff;">Dr. Markus S.</div>
-          <div style="font-size: 0.82rem; color: #38bdf8;">Privatier &amp; Immobilieninvestor (Wien)</div>
-        </div>
-      </div>
-
-      <!-- Testimonial 3 -->
-      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div style="color: #fef08a; font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
-          <p style="font-style: italic; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.25rem;">
-            „Die Villa Adam ist atemberaubend, aber der wahre Wert lag in den Gesprächen mit den anderen Teilnehmern und den Referenten am Abend. Man spart sich Jahre an Lehrgeld.“
-          </p>
-        </div>
-        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
-          <div style="font-weight: 700; color: #ffffff;">Alexander &amp; Elena B.</div>
-          <div style="font-size: 0.82rem; color: #38bdf8;">Software-Entwickler &amp; Krypto-Investoren</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PREISE & LEISTUNGSTRANSPARENZ ===== -->
-<section id="preise" class="bg-primary-section">
-  <div class="container">
-    <div class="section-header fade-in">
-      <div class="section-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        Preise &amp; Leistungspaket
-      </div>
-      <h2 class="section-title">Investiere in deine strategische Klarheit</h2>
-      <p class="section-subtitle">Vollständige Leistungstransparenz. Dein Premium-Paket für 8 intensive Due-Diligence Tage in Nordzypern.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <!-- Einzelbelegung Villa Adam -->
-      <div class="pricing-card pricing-card-highlight fade-in">
-        <div class="pricing-popular">MAX. 8 PLÄTZE</div>
-        <div class="pricing-label">Einzelzimmerbelegung (Suite)</div>
-        <div class="pricing-price">2.950 €</div>
-        <div class="pricing-per">pro Person (Luxusvilla auf 5-Sterne-Niveau)</div>
-        <ul class="pricing-features">
-          <li>✓ 8-Tage Exklusiv-Programm (Due Diligence &amp; Workshops)</li>
-          <li>✓ Eigene Master-Suite mit en-suite Marmorbad (Villa Adam)</li>
-          <li>✓ Privater Butler &amp; täglicher Reinigungsservice (8h/Tag)</li>
-          <li>✓ Private Executive Transfers während der gesamten Journey</li>
-          <li>✓ Bis zu 400 € Experience- &amp; Dining-Budget inklusive</li>
-          <li>✓ Sämtliche gemeinsamen Mahlzeiten &amp; Getränke inklusive</li>
-          <li>✓ Alle Fachvorträge, Vor-Ort-Besichtigungen &amp; 1-zu-1 Strategiegespräch</li>
-          <li>✓ 15% Partnervorteil auf optionale PENeM-Leistungen</li>
-        </ul>
-        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem;">
-          <a href="mailto:exitstrategyjourney@proton.me?subject=Einzelzimmer%20buchen%20-%20Investor%20Journey%20Oktober%202026" class="btn btn-primary pricing-btn">Jetzt Platz sichern</a>
-          <a href="mailto:exitstrategyjourney@proton.me?subject=Bewerbung%20/%20Kennenlerngespräch%20-%20Investor%20Journey%20Oktober%202026" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.6rem 1rem; border-color: rgba(255,255,255,0.3);">Kennenlerngespräch anfragen</a>
-        </div>
-      </div>
-
-      <!-- Begleitperson im Doppelzimmer -->
-      <div class="pricing-card fade-in">
-        <div class="pricing-label">Begleitperson (Doppelbelegung)</div>
-        <div class="pricing-price">2.150 €</div>
-        <div class="pricing-per">pro Person im gemeinsamen Zimmer</div>
-        <ul class="pricing-features">
-          <li>✓ 8-Tage Exklusiv-Programm (Due Diligence &amp; Workshops)</li>
-          <li>✓ Gemeinsame Suite mit en-suite Marmorbad (Villa Adam)</li>
-          <li>✓ Privater Butler &amp; täglicher Reinigungsservice (8h/Tag)</li>
-          <li>✓ Private Executive Transfers während der gesamten Journey</li>
-          <li>✓ Bis zu 400 € Experience- &amp; Dining-Budget inklusive</li>
-          <li>✓ Sämtliche gemeinsamen Mahlzeiten &amp; Getränke inklusive</li>
-          <li>✓ Alle Fachvorträge, Vor-Ort-Besichtigungen &amp; Workshops</li>
-          <li>✓ 15% Partnervorteil auf optionale PENeM-Leistungen</li>
-        </ul>
-        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem;">
-          <a href="mailto:exitstrategyjourney@proton.me?subject=Begleitperson%20buchen%20-%20Investor%20Journey%20Oktober%202026" class="btn btn-primary pricing-btn">Begleitperson buchen</a>
-          <a href="mailto:exitstrategyjourney@proton.me?subject=Bewerbung%20/%20Kennenlerngespräch%20-%20Investor%20Journey%20Oktober%202026" class="btn btn-outline" style="font-size: 0.9rem; padding: 0.6rem 1rem; border-color: rgba(255,255,255,0.3);">Kennenlerngespräch anfragen</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Transparenz- & Konditionen Box -->
-    <div class="pricing-note fade-in" style="background: rgba(15,23,42,0.85); padding: 2rem; border-radius: 12px; border: 1px solid rgba(212,175,55,0.25); margin-top: 2.5rem;">
-      <h4 style="color: var(--gold, #d97706); margin-bottom: 1rem; font-size: 1.2rem;">Kompakte Übersicht der Leistungsgrenzen &amp; Konditionen:</h4>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-        <!-- Inklusive -->
-        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <strong style="color: #86efac; display: block; margin-bottom: 0.5rem;">✅ Vollständig inkludiert:</strong>
-          <ul style="font-size: 0.88rem; color: rgba(255,255,255,0.85); padding-left: 1.2rem; line-height: 1.6;">
-            <li>Unterkunft in Villa Adam auf 5-Sterne-Niveau</li>
-            <li>Butler, Hausmädchen, Pool- &amp; Gartenpflege</li>
-            <li>Alle Executive Transfers vor Ort ab/bis LCA oder ECN</li>
-            <li>Vollverpflegung &amp; bis zu 400 € Experience-Budget</li>
-            <li>Alle Fachvorträge, Markt- &amp; Bauträgertouren</li>
-          </ul>
-        </div>
-
-        <!-- Nicht inklusive -->
-        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <strong style="color: #fca5a5; display: block; margin-bottom: 0.5rem;">❌ Nicht im Reisepreis enthalten:</strong>
-          <ul style="font-size: 0.88rem; color: rgba(255,255,255,0.85); padding-left: 1.2rem; line-height: 1.6;">
-            <li>Internationale Flugtickets (Zielflughafen Larnaca LCA bzw. Ercan ECN)</li>
-            <li>Persönliche Ausgaben außerhalb des Programms</li>
-            <li>Individuelle Reiseversicherungen</li>
-          </ul>
-        </div>
-
-        <!-- Optionale Partnerleistungen -->
-        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <strong style="color: #38bdf8; display: block; margin-bottom: 0.5rem;">ℹ️ Optionale Zusatzleistungen (Partner):</strong>
-          <ul style="font-size: 0.88rem; color: rgba(255,255,255,0.85); padding-left: 1.2rem; line-height: 1.6;">
-            <li>Individuelle Rechts-, Steuer- oder Notargutachten über lokale Lizenzpartner</li>
-            <li>Operative Betreuung bei Firmengründung oder Grundbucheintrag nach der Journey</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Buchungsregeln -->
-      <ul style="list-style: none; padding: 0; margin: 0 0 1rem 0; display: flex; flex-direction: column; gap: 0.5rem; text-align: left; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-        <li>📅 <strong>Buchbar bis:</strong> 07. September 2026</li>
-        <li>🔄 <strong>Kostenlose Stornierung:</strong> Bis einschließlich 09. September 2026 (ohne Angabe von Gründen)</li>
-        <li>👥 <strong>Teilnehmerbegrenzung:</strong> Mindestens 6 Personen, streng limitiert auf <strong>maximal 8 Teilnehmer</strong></li>
-        <li>📜 <strong>Bedingungen:</strong> Es gelten die <a href="journey-agb.html" style="color:#fef08a; text-decoration:underline;">Teilnahme- &amp; Reisebedingungen (AGB)</a>.</li>
+      <ul class="nav-links">
+        <li><a href="#hero">Start</a></li>
+        <li><a href="#tracker">Boiling Frog</a></li>
+        <li><a href="#saeulen">5 Säulen</a></li>
+        <li><a href="#journeys">Journeys</a></li>
+        <li><a href="#closing-reisen">Begleitung</a></li>
+        <li><a href="trustscope.html">🛡️ TrustScope</a></li>
+        <li><a href="index-b.html" class="nav-btn" style="background: hsl(45, 90%, 40%); color: white !important;">Side B (Oase)</a></li>
       </ul>
-      <p style="margin-top:.75rem;"><a href="https://www.lta-reiseschutz.at/at/aufnahmeantrag/?RB=dPvgyURCxurL" target="_blank" rel="noopener" class="insurance-link">Freiwillige Reise-Storno/Krankenversicherung abschließen →</a></p>
     </div>
+  </header>
 
-    <!-- ZAHLUNGSINFORMATIONEN & BANKVERBINDUNG (EUR) -->
-    <div class="pricing-note fade-in" style="background: rgba(12, 18, 32, 0.95); padding: 2rem; border-radius: 12px; border: 1px solid rgba(234, 179, 8, 0.4); margin-top: 2rem; box-shadow: 0 12px 30px rgba(0,0,0,0.5);">
-      <h4 style="color: #fef08a; margin-bottom: 1.25rem; font-size: 1.25rem; display: flex; align-items: center; gap: 0.6rem;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fef08a" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-        Zahlungsinformationen &amp; Bankverbindung (Euro)
-      </h4>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
-        <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <span style="color: #38bdf8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">Empfänger</span>
-          <strong style="font-size: 1.1rem; color: #ffffff;">Michael Fuchs</strong>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <span style="color: #38bdf8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">IBAN (EUR)</span>
-          <strong style="font-size: 1.1rem; color: #fef08a; font-family: monospace; letter-spacing: 0.06em;">LT63 3250 0721 1495 5649</strong>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <span style="color: #38bdf8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">BIC (SWIFT)</span>
-          <strong style="font-size: 1.1rem; color: #ffffff; font-family: monospace;">REVOLT21</strong>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <span style="color: #38bdf8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">Name &amp; Anschrift der Bank</span>
-          <strong style="color: #ffffff; display: block; margin-bottom: 0.2rem;">Revolut Bank UAB</strong>
-          <span style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.4; display: block;">Konstitucijos ave. 21B, 08130, Vilnius, Lithuania</span>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <span style="color: #38bdf8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">BIC der Senderbank (Routing)</span>
-          <strong style="font-size: 1.1rem; color: #ffffff; font-family: monospace;">CHASDEFX</strong>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <span style="color: #38bdf8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">Verwendungszweck</span>
-          <span style="color: #ffffff; font-size: 0.95rem; font-weight: 600;">Investor Journey 10/2026 - [Vorname Nachname]</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== KONTAKT / BEWERBUNG ===== -->
-<section id="kontakt" class="cta-section">
-  <div class="container">
-    <div class="fade-in" style="max-width:850px; margin:0 auto;">
-      <div class="section-badge" style="margin-bottom:1.5rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Bewerbung &amp; Kennenlernen
-      </div>
-      <h2 class="section-title">Bereit für deine fundierte Standortentscheidung?</h2>
-      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
-        Sichere dir deinen Platz auf der Exclusive Investor Due-Diligence Journey (09.–16. Oktober 2026). Maximal 8 Teilnehmer für höchste Betreuungsqualität und Diskretion.
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <video class="hero-bg" autoplay loop muted playsinline poster="assets/exit_strategy_hero_bg_a.png">
+      <source src="assets/background.mp4" type="video/mp4">
+    </video>
+    <div class="grid-bg"></div>
+    <div class="glow-dot glow-dot-1"></div>
+    <div class="glow-dot glow-dot-2"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="pill animate-fadeIn">Deine persönliche Ausweichroute (Side A)</div>
+      <h1 class="headline-main">
+        Finde deinen Weg in die Freiheit: <br>Deine <span>EXIT Strategy</span>
+      </h1>
+      <p style="font-size: 1.25rem; max-width: 700px; line-height: 1.7; margin-bottom: 2.5rem;" class="animate-fadeIn">
+        Bürokratische Überlastung, steigender Steuerdruck und staatliche Überwachung im DACH-Raum nehmen stetig zu. Wir konzipieren und begleiten deine maßgeschneiderte Exit-Strategie zur finanziellen, räumlichen und geschäftlichen Freiheit.
       </p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-        <!-- Michael Fuchs -->
-        <div class="contact-card" style="margin: 0;">
-          <div class="contact-name">Michael Fuchs</div>
-          <div class="contact-role">Host &amp; Strategieberater</div>
-          <div class="contact-links">
-            <a href="mailto:michael.fuchs@hfvb.at" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              michael.fuchs@hfvb.at
-            </a>
-            <a href="tel:+436608102747" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              +43 660 8102747
-            </a>
-          </div>
-        </div>
-
-        <!-- Marcel Tammer -->
-        <div class="contact-card" style="margin: 0;">
-          <div class="contact-name">Marcel Tammer</div>
-          <div class="contact-role">Host &amp; Investor Relations</div>
-          <div class="contact-links">
-            <a href="mailto:exitstrategyjourney@proton.me" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              exitstrategyjourney@proton.me
-            </a>
-            <a href="tel:+4917647121827" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              +49 176 47121827
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 2.5rem; text-align: center;">
-        <a href="mailto:exitstrategyjourney@proton.me?subject=Bewerbung%20/%20Kennenlerngespräch%20-%20Investor%20Journey%20Oktober%202026&body=Guten%20Tag%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Exclusive%20Investor%20Due-Diligence%20Journey%20nach%20Nordzypern%20(09.-16.%20Oktober%202026)%20und%20m%C3%B6chte%20gerne%20ein%20unverbindliches%20Kennenlerngespr%C3%A4ch%20vereinbaren.%0A%0AMeine%20Kontaktdaten%3A%0AName%3A%20%0ATelefon%3A%20%0AWunschzeit%20f%C3%BCr%20ein%20Gespr%C3%A4ch%3A%20%0A%0AFreundliche%20Gr%C3%BC%C3%9Fe" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
-          ✉️ Unverbindliches Kennenlerngespräch vereinbaren
+      <div class="hero-buttons">
+        <a href="#journeys" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Journeys entdecken
+        </a>
+        <a href="#tracker" class="btn btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Sicherheitslage prüfen
         </a>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container">
-    <div class="footer-brand">Exclusive Investor Due-Diligence Journey Nordzypern</div>
-    <p>Eine Initiative des KOMPASS Forschungs- und Bildungsvereins für Selbstbestimmung und Unabhängigkeit.</p>
-    <div class="footer-links">
-      <a href="#hero">Start</a>
-      <a href="#outcomes">Ergebnisse</a>
-      <a href="#saeulen">5 Säulen</a>
-      <a href="#due-diligence">Due Diligence</a>
-      <a href="#zielgruppe">Zielgruppe</a>
-      <a href="#unterkunft">Villa Adam</a>
-      <a href="#programm">Programm</a>
-      <a href="#partner">Experten</a>
-      <a href="#social-proof">Erfahrungen</a>
-      <a href="#preise">Preise</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="journey-agb.html">Teilnahmebedingungen (AGB)</a>
+  <!-- ===== BOILING FROG SECTION ===== -->
+  <section id="tracker" style="background: var(--bg); padding-top: 0;">
+    <div class="container">
+      <div class="absurdistan-tracker fade-in" onclick="location.href='absurdistan.html'">
+        <div class="tracker-layout">
+          <div>
+            <div class="section-badge" style="background: rgba(240, 90, 40, 0.15); color: hsl(15, 80%, 60%); margin-bottom: 1rem;">
+              Sicherheitsindikator
+            </div>
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: white;">Der Boiling Frog Index (DACH)</h2>
+            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 1.5rem;">
+              Der "kochende Frosch" merkt die Temperaturerhöhung erst, wenn es zu spät ist. Der Boiling Frog Index (Absurdistan-Score) misst die Dichte restriktiver Gesetze, Steuererhöhungen und Überwachungsmaßnahmen im DACH-Raum für das Jahr 2026.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">
+              <strong>Aktuelle Treiber:</strong> eIDAS 2.0 ID-Mandate, das EU-Lieferkettengesetz, verschärfte Krypto-Melderegeln ab Mitte 2026 und energetische Zwangssanierungsgesetze für Hausbesitzer.
+            </p>
+          </div>
+          <div class="tracker-gauge">
+            <div class="gauge-circle">
+              <div class="gauge-value">8.2</div>
+            </div>
+            <div class="gauge-label">BFI Gefahrenstufe</div>
+            <div style="font-size: 0.8rem; color: hsl(15, 80%, 65%); font-weight: 700; margin-top: 0.5rem; text-transform: uppercase;">Kritischer Grenzwert</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2026 Exclusive Investor Journey Nordzypern · KOMPASS Verein (ZVR 1238380524). Alle Rechte vorbehalten.
+  </section>
+
+  <!-- ===== GREEK COLUMNS & FLOWER DIAGRAM ===== -->
+  <section id="saeulen" style="background: var(--muted-bg);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-badge">Architektur der Freiheit</div>
+        <h2 class="section-title">Die drei Säulen &amp; das Fundament</h2>
+        <p class="section-subtitle">Drei tragende Säulen, gestützt durch ein organisches Fundament aus fünf elementaren Freiheiten.</p>
+      </div>
+
+      <div class="flower-diagram-wrapper fade-in">
+        
+        <!-- Center: 3 Pillars -->
+        <div class="pillars-center-wrapper">
+          <!-- Pillar 1 -->
+          <div class="greek-pillar interactive" onclick="window.location.href='saeule-aufklaerung.html'">
+            <div class="pillar-cap"></div>
+            <div class="pillar-shaft" style="height: 128px;">
+              <div class="pillar-engraving">3</div>
+              <div class="pillar-title">Aufklärung</div>
+              <div class="pillar-desc">Risikoanalyse</div>
+            </div>
+            <div class="pillar-base"></div>
+            
+            <!-- Hover Popup -->
+            <div class="hover-popup">
+              <div class="popup-title">Aufklärung</div>
+              <div class="popup-purpose">Erkenne, was dich fesselt. Analyse der regulatorischen und steuerlichen Risiken.</div>
+              <a href="saeule-aufklaerung.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="greek-pillar interactive" onclick="window.location.href='saeule-loesung.html'">
+            <div class="pillar-cap"></div>
+            <div class="pillar-shaft" style="height: 192px;">
+              <div class="pillar-engraving">6</div>
+              <div class="pillar-title">Lösung</div>
+              <div class="pillar-desc">Maßgeschneiderte Konzepte</div>
+            </div>
+            <div class="pillar-base"></div>
+
+            <!-- Hover Popup -->
+            <div class="hover-popup">
+              <div class="popup-title">Lösung</div>
+              <div class="popup-purpose">Dein maßgeschneiderter Plan. Architektur deiner internationalen Firmen- und Vermögensstruktur.</div>
+              <a href="saeule-loesung.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="greek-pillar interactive" onclick="window.location.href='saeule-begleitung.html'">
+            <div class="pillar-cap"></div>
+            <div class="pillar-shaft" style="height: 256px;">
+              <div class="pillar-engraving">9</div>
+              <div class="pillar-title">Begleitung</div>
+              <div class="pillar-desc">Physische Umsetzung</div>
+            </div>
+            <div class="pillar-base"></div>
+
+            <!-- Hover Popup -->
+            <div class="hover-popup">
+              <div class="popup-title">Begleitung</div>
+              <div class="popup-purpose">Wir gehen den Weg mit dir. Physische Begleitung und Concierge-Service vor Ort.</div>
+              <a href="saeule-begleitung.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- The 5 Petals (Elemente) in a semi-circle/circle -->
+        <!-- Finanzen (Metall) -->
+        <div class="flower-petal petal-finanzen interactive" onclick="window.location.href='element-finanzen.html'">
+          <div class="petal-content">
+            <span class="petal-icon">💰</span>
+            <span class="petal-name">Finanzen</span>
+          </div>
+          <div class="hover-popup popup-bottom">
+            <div class="popup-title">Finanzen (Metall)</div>
+            <div class="popup-purpose">Dein Lebenswerk schützen. Steueroptimierung, Krypto-Custody und Vermögensaufbau.</div>
+            <a href="element-finanzen.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+          </div>
+        </div>
+
+        <!-- Raum (Erde) -->
+        <div class="flower-petal petal-raum interactive" onclick="window.location.href='element-raum.html'">
+          <div class="petal-content">
+            <span class="petal-icon">🌍</span>
+            <span class="petal-name">Raum</span>
+          </div>
+          <div class="hover-popup popup-bottom">
+            <div class="popup-title">Raum (Erde)</div>
+            <div class="popup-purpose">Lebe, wo du willst. Geo-Arbitrage, Wohnsitzverlagerung und Sovereign Hubs.</div>
+            <a href="element-raum.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+          </div>
+        </div>
+
+        <!-- Gesundheit (Wasser) -->
+        <div class="flower-petal petal-gesundheit interactive" onclick="window.location.href='element-gesundheit.html'">
+          <div class="petal-content">
+            <span class="petal-icon">🏥</span>
+            <span class="petal-name">Gesundheit</span>
+          </div>
+          <div class="hover-popup popup-bottom">
+            <div class="popup-title">Gesundheit (Wasser)</div>
+            <div class="popup-purpose">Zugang zu den besten Systemen. Internationale Versicherungen und Bio-Hacking.</div>
+            <a href="element-gesundheit.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+          </div>
+        </div>
+
+        <!-- Business (Feuer) -->
+        <div class="flower-petal petal-business interactive" onclick="window.location.href='element-business.html'">
+          <div class="petal-content">
+            <span class="petal-icon">🏢</span>
+            <span class="petal-name">Business</span>
+          </div>
+          <div class="hover-popup popup-bottom">
+            <div class="popup-title">Business (Feuer)</div>
+            <div class="popup-purpose">Unternehmen ohne Fesseln. 0% Steuern, Remote Operations und IP-Schutz.</div>
+            <a href="element-business.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+          </div>
+        </div>
+
+        <!-- Absicherung (Luft) -->
+        <div class="flower-petal petal-absicherung interactive" onclick="window.location.href='element-absicherung.html'">
+          <div class="petal-content">
+            <span class="petal-icon">🛡️</span>
+            <span class="petal-name">Absicherung</span>
+          </div>
+          <div class="hover-popup popup-bottom">
+            <div class="popup-title">Absicherung (Luft)</div>
+            <div class="popup-purpose">Der Plan B. Zweiter Pass, Flaggen-Theorie und Familien-Notfallpläne.</div>
+            <a href="element-absicherung.html" class="popup-btn" onclick="event.stopPropagation();">Mehr erfahren</a>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- ===== SCROLL ANIMATIONS & VILLA SLIDESHOW ===== -->
-<script>
-var villaCurrentIndex = 0;
-var villaTotalSlides = 11;
-var villaSlideInterval = null;
+  <!-- ===== FREIHEITS-QUICK-CHECK ===== -->
+  <section id="quickcheck" style="background: var(--bg);">
+    <div class="container">
+      <div class="quickcheck-card fade-in">
+        <div class="quickcheck-layout">
+          <div class="quickcheck-content">
+            <div class="section-badge" style="background: rgba(212, 175, 55, 0.12); color: var(--secondary); margin-bottom: 1rem;">
+              Selbstanalyse
+            </div>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary-fg);">Der Freiheits-Quick-Check</h2>
+            <p style="color: var(--muted); line-height: 1.7; margin-bottom: 2rem;">
+              Wie unabhängig bist du wirklich? Bewerte die 4 Säulen deiner Freiheit und erhalte sofort deinen persönlichen Freiheits-Score sowie eine Handlungsempfehlung.
+            </p>
+            
+            <div id="quickcheck-form">
+              <!-- Question 1: Finanzen -->
+              <div class="qc-question active" data-step="1">
+                <h4 style="color: var(--primary-fg); font-size: 1.2rem; margin-bottom: 1rem;">1/4: Finanzen & Steuern</h4>
+                <p style="color: var(--muted); margin-bottom: 1.5rem;">Wie sehr bist du aktuell von hohen Steuern und Inflation betroffen?</p>
+                <div class="qc-options">
+                  <button class="qc-btn" data-val="10">Sehr stark (0% Freiheit)</button>
+                  <button class="qc-btn" data-val="50">Spürbar, aber aushaltbar (50%)</button>
+                  <button class="qc-btn" data-val="100">Komplett optimiert (100%)</button>
+                </div>
+              </div>
+              
+              <!-- Question 2: Raum -->
+              <div class="qc-question" data-step="2" style="display:none;">
+                <h4 style="color: var(--primary-fg); font-size: 1.2rem; margin-bottom: 1rem;">2/4: Räumliche Freiheit</h4>
+                <p style="color: var(--muted); margin-bottom: 1.5rem;">Kannst du deinen Wohn- und Arbeitsort jederzeit frei wählen?</p>
+                <div class="qc-options">
+                  <button class="qc-btn" data-val="10">Ortsgebunden (0% Freiheit)</button>
+                  <button class="qc-btn" data-val="60">Teilweise ortsunabhängig (60%)</button>
+                  <button class="qc-btn" data-val="100">100% Remote / Geo-Arbitrage (100%)</button>
+                </div>
+              </div>
 
-function updateVillaSlideshow() {
-  var track = document.getElementById('villaSlidesTrack');
-  var counter = document.getElementById('villaSlideCounter');
-  var thumbContainer = document.getElementById('villaThumbnails');
-  var thumbs = document.querySelectorAll('#villaThumbnails .thumb');
-  
-  if (track) {
-    track.style.transform = 'translateX(-' + (villaCurrentIndex * 100) + '%)';
-  }
-  if (counter) {
-    counter.textContent = (villaCurrentIndex + 1) + ' / ' + villaTotalSlides;
-  }
-  thumbs.forEach(function(t, idx) {
-    if (idx === villaCurrentIndex) {
-      t.classList.add('active');
-    } else {
-      t.classList.remove('active');
-    }
-  });
+              <!-- Question 3: Gesundheit -->
+              <div class="qc-question" data-step="3" style="display:none;">
+                <h4 style="color: var(--primary-fg); font-size: 1.2rem; margin-bottom: 1rem;">3/4: Gesundheits-Souveränität</h4>
+                <p style="color: var(--muted); margin-bottom: 1.5rem;">Hast du unabhängigen Zugang zu erstklassiger medizinischer Versorgung?</p>
+                <div class="qc-options">
+                  <button class="qc-btn" data-val="10">Abhängig vom Kassensystem (10%)</button>
+                  <button class="qc-btn" data-val="50">Private Versicherung, aber lokal gebunden (50%)</button>
+                  <button class="qc-btn" data-val="100">Internationaler Zugang & Bio-Hacking (100%)</button>
+                </div>
+              </div>
 
-  if (thumbContainer && thumbs[villaCurrentIndex]) {
-    var activeThumb = thumbs[villaCurrentIndex];
-    thumbContainer.scrollTo({
-      left: activeThumb.offsetLeft - (thumbContainer.clientWidth / 2) + (activeThumb.clientWidth / 2),
-      behavior: 'smooth'
-    });
-  }
-}
+              <!-- Question 4: Business -->
+              <div class="qc-question" data-step="4" style="display:none;">
+                <h4 style="color: var(--primary-fg); font-size: 1.2rem; margin-bottom: 1rem;">4/4: Business & Regulierung</h4>
+                <p style="color: var(--muted); margin-bottom: 1.5rem;">Wie stark schränkt die Bürokratie dein Unternehmen ein?</p>
+                <div class="qc-options">
+                  <button class="qc-btn" data-val="10">Stark reguliert / hohe Auflagen (10%)</button>
+                  <button class="qc-btn" data-val="60">Auslands-Setup in Planung (60%)</button>
+                  <button class="qc-btn" data-val="100">Bürokratiefrei & dezentral (100%)</button>
+                </div>
+              </div>
 
-function moveVillaSlide(dir) {
-  villaCurrentIndex = (villaCurrentIndex + dir + villaTotalSlides) % villaTotalSlides;
-  updateVillaSlideshow();
-  restartVillaAutoplay();
-}
+              <!-- Result -->
+              <div class="qc-result" data-step="result" style="display:none;">
+                <h4 style="color: var(--primary-fg); font-size: 1.5rem; margin-bottom: 1rem;">Dein Freiheits-Score</h4>
+                <div class="qc-score-display" style="font-size: 4rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; line-height: 1;">
+                  <span id="qc-score-val">0</span>%
+                </div>
+                <p id="qc-score-text" style="color: var(--muted); margin-bottom: 2rem;">...</p>
+                <a href="#journeys" class="btn btn-primary" onclick="this.closest('.qc-result').style.display='none'; document.querySelector('.qc-question[data-step=\'1\']').style.display='block'; window.qcScore=0; document.getElementById('qc-live-score').textContent='0%'; document.getElementById('qc-svg-circle').setAttribute('stroke-dasharray', '0, 100');">Erneut testen</a>
+              </div>
+            </div>
+          </div>
+          <div class="quickcheck-visual">
+            <div class="qc-circle-bg">
+              <div class="qc-progress-circle">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                  <path class="circle-bg"
+                    d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path class="circle"
+                    id="qc-svg-circle"
+                    stroke-dasharray="0, 100"
+                    d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <text x="18" y="20.35" class="percentage" id="qc-live-score">0%</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-function setVillaSlide(idx) {
-  villaCurrentIndex = idx;
-  updateVillaSlideshow();
-  restartVillaAutoplay();
-}
+  <!-- ===== OUR JOURNEYS ===== -->
+  <section id="journeys" style="background: var(--bg);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-badge">Aktive Routen</div>
+        <h2 class="section-title">Erprobte Ausweichrouten</h2>
+        <p class="section-subtitle">Wähle eine unserer Journeys, um dir persönliche und geschäftliche Handlungsfähigkeit zu sichern.</p>
+      </div>
 
-function startVillaAutoplay() {
-  stopVillaAutoplay();
-  villaSlideInterval = setInterval(function() {
-    villaCurrentIndex = (villaCurrentIndex + 1) % villaTotalSlides;
-    updateVillaSlideshow();
-  }, 5000);
-}
+      <div class="journeys-grid">
+        <!-- Nordzypern Journey -->
+        <div class="journey-card fade-in">
+          <div class="journey-img">
+            <img src="assets/cyprus-hero.png" alt="Nordzypern">
+            <span class="journey-card-badge">JETZT BUCHBAR</span>
+          </div>
+          <div class="journey-content">
+            <h3>Investor Journey Nordzypern</h3>
+            <div class="journey-meta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              15. – 22. Mai 2026 · Girne &amp; Famagusta
+            </div>
+            <p>
+              Unsere exklusive 8-Tage-Reise. Erlebe vor Ort das enorme Potenzial von Nordzypern: Premium-Immobilien ohne EU-Regulierung, steuerfreie Firmensetups mit Michael Schenk und modernste biometrische Gesundheitstechnologien.
+            </p>
+            <a href="journey.html" class="btn btn-primary journey-btn">Details &amp; Programm ansehen</a>
+          </div>
+        </div>
 
-function stopVillaAutoplay() {
-  if (villaSlideInterval) {
-    clearInterval(villaSlideInterval);
-    villaSlideInterval = null;
-  }
-}
+        <!-- Sovereign retreats / Hub -->
+        <div class="journey-card fade-in">
+          <div class="journey-img">
+            <img src="assets/cyprus-villa.png" alt="Sovereign Hub &amp; Workspaces" style="filter: brightness(0.85);">
+            <span class="journey-card-badge upcoming">IN VORBEREITUNG</span>
+          </div>
+          <div class="journey-content">
+            <h3>Sovereign Hubs &amp; Off-Grid Retreats</h3>
+            <div class="journey-meta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              Geplant für Herbst 2026 · Zypern &amp; Kanaren
+            </div>
+            <p>
+              Der physische Rückzugsort für freie Geister. Unabhängige Co-Living &amp; Co-Working Hubs mit dezentraler Energieversorgung, Satelliten-Backup, P2P LoRa-Mesh-Netzwerken und Post-Quantum-verschlüsselter lokaler Kommunikation.
+            </p>
+            <button class="btn btn-outline journey-btn" style="border-color: var(--border); color: var(--muted); cursor: not-allowed;" disabled>Noch nicht geöffnet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-function restartVillaAutoplay() {
-  stopVillaAutoplay();
-  startVillaAutoplay();
-}
+  <!-- ===== CLOSING-REISEN & BEGLEITUNG ===== -->
+  <section id="closing-reisen" style="background: var(--muted-bg);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-badge" style="background: rgba(212, 175, 55, 0.12); color: var(--secondary-dark);">Begleitung</div>
+        <h2 class="section-title">Premium-Closing &amp; Reisebegleitung</h2>
+        <p class="section-subtitle">Nach erfolgreichem Abschluss deines Setups lassen wir dich nicht allein. Wir begleiten deine physische und geschäftliche Verlagerung.</p>
+      </div>
 
-document.addEventListener('DOMContentLoaded', function() {
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+      <div class="journeys-grid">
+        <!-- VIP Individualreise -->
+        <div class="journey-card fade-in">
+          <div class="journey-img">
+            <img src="assets/cyprus-villa.png" alt="Private Jet VIP Transfer" style="filter: brightness(0.85);">
+            <span class="journey-card-badge">INDIVIDUELL / 1-TO-1</span>
+          </div>
+          <div class="journey-content">
+            <h3>Ultra-VIP 1-to-1 Begleitung</h3>
+            <div class="journey-meta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Bedarfsgesteuerte Anreise · Privatjet &amp; Butler
+            </div>
+            <p>
+              Absolute Diskretion und Exklusivität. Anreise per Privatjet ohne Wartezeiten, persönliche Vor-Ort-Betreuung durch deinen Relocation-Officer und Chauffeur-Service in Premium-Vans (GLE/GLS Klasse). Vollständige Abwicklung aller Behörden-, Wohnsitz- und Bankangelegenheiten als Komplettservice.
+            </p>
+            <a href="mailto:michael.fuchs@hfvb.at?subject=Anfrage%201-to-1%20VIP%20Closing%20Reise" class="btn btn-primary journey-btn">Verfügbarkeit anfragen</a>
+          </div>
+        </div>
+
+        <!-- VIP Gruppenreise -->
+        <div class="journey-card fade-in">
+          <div class="journey-img">
+            <img src="assets/cyprus-hero.png" alt="Mercedes GLE/GLS Luxury Fleet">
+            <span class="journey-card-badge" style="background: var(--primary); color: white;">VIP GRUPPEN-PAKET</span>
+          </div>
+          <div class="journey-content">
+            <h3>VIP Begleitungs-Paket</h3>
+            <div class="journey-meta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              Kohorte Oktober 2026 · Max. 3 Teilnehmer pro Guide
+            </div>
+            <p>
+              Begleitung in einer Kleingruppe für maximale Betreuungsqualität. Transfer in unserer Mercedes GLE/GLS Luxusflotte mit Chauffeur, geteiltem Butler-Service und Unterkunft in Premium-Villen. Die Kohorte im Oktober wird zum Schutz der Teilnehmerqualität auf zwei separate Wochen aufgeteilt (Gruppe 1 &amp; Gruppe 2).
+            </p>
+            <a href="mailto:michael.fuchs@hfvb.at?subject=Reservierung%20VIP%20Closing%20Reise%20Oktober" class="btn btn-outline journey-btn" style="border-color: var(--primary); color: var(--primary);">Platz reservieren</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===== KONTAKT / CTA ===== -->
+  <section id="kontakt" class="cta-section">
+    <div class="container">
+      <div class="fade-in" style="max-width:800px; margin:0 auto;">
+        <div class="section-badge" style="margin-bottom:1.5rem;">Beratung &amp; Kontakt</div>
+        <h2 class="section-title">Bereit für deine Exit Strategy?</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">
+          Jeder Weg ist individuell. Lass uns in einem vertraulichen Gespräch ermitteln, welche Route für deine persönliche, geschäftliche und familiäre Situation die sicherste ist.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+          <!-- Michael Fuchs -->
+          <div class="contact-card" style="margin: 0;">
+            <div class="contact-name">Michael Fuchs</div>
+            <div class="contact-role">Dein Experte &amp; Ansprechpartner</div>
+            <div class="contact-links">
+              <a href="mailto:michael.fuchs@hfvb.at" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                michael.fuchs@hfvb.at
+              </a>
+              <a href="tel:+436608102747" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +43 660 8102747
+              </a>
+            </div>
+          </div>
+
+          <!-- Marcel Tammer -->
+          <div class="contact-card" style="margin: 0;">
+            <div class="contact-name">Marcel Tammer</div>
+            <div class="contact-role">Dein Experte &amp; Ansprechpartner</div>
+            <div class="contact-links">
+              <a href="mailto:exitstrategyjourney@proton.me" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                exitstrategyjourney@proton.me
+              </a>
+              <a href="tel:+4917647121827" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +49 176 47121827
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">KOMPASS · EXIT Strategy</div>
+      <p style="margin-top: 0.5rem; opacity: 0.85;">Souveränität, persönliche Selbstbestimmung &amp; finanzielle Unabhängigkeit.</p>
+      <div class="footer-links">
+        <a href="#hero">Start</a>
+        <a href="#tracker">Boiling Frog</a>
+        <a href="#saeulen">5 Säulen</a>
+        <a href="#journeys">Journeys</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 EXIT Strategy · KOMPASS - Forschungs- und Bildungsverein für Selbstbestimmung und Unabhängigkeit (ZVR 1238380524). Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== NAVIGATION & SCROLL SCRIPT ===== -->
+  <script>
+    // Header background transparency transition on scroll
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.fade-in').forEach(function(el) {
-    observer.observe(el);
-  });
+    // IntersectionObserver scroll animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  updateVillaSlideshow();
-  startVillaAutoplay();
+      document.querySelectorAll('.fade-in').forEach((el) => {
+        observer.observe(el);
+      });
+    });
+  </script>
 
-  var mainWrapper = document.querySelector('.slideshow-main-wrapper');
-  if (mainWrapper) {
-    mainWrapper.addEventListener('mouseenter', stopVillaAutoplay);
-    mainWrapper.addEventListener('mouseleave', startVillaAutoplay);
-  }
-});
-</script>
+  <!-- ===== QUICK CHECK SCRIPT ===== -->
+  <script>
+    window.qcScore = 0;
+    const questions = document.querySelectorAll('.qc-question');
+    const resultDiv = document.querySelector('.qc-result');
+    const liveScoreText = document.getElementById('qc-live-score');
+    const svgCircle = document.getElementById('qc-svg-circle');
+    
+    document.querySelectorAll('.qc-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const val = parseInt(this.getAttribute('data-val'));
+        const parent = this.closest('.qc-question');
+        const step = parseInt(parent.getAttribute('data-step'));
+        
+        // Add to total score (max possible = 400, so divide by 4)
+        window.qcScore += val;
+        
+        // Update live visual
+        const currentPercentage = Math.round(window.qcScore / step);
+        liveScoreText.textContent = currentPercentage + '%';
+        svgCircle.setAttribute('stroke-dasharray', `${currentPercentage}, 100`);
+        
+        // Transition
+        parent.style.display = 'none';
+        if(step < 4) {
+          document.querySelector(`.qc-question[data-step="${step+1}"]`).style.display = 'block';
+        } else {
+          // Final result
+          const finalScore = Math.round(window.qcScore / 4);
+          resultDiv.style.display = 'block';
+          document.getElementById('qc-score-val').textContent = finalScore;
+          
+          let text = "";
+          if(finalScore < 40) {
+            text = "Dein Freiheitsgrad ist kritisch niedrig. Du bist stark von lokalen Systemen abhängig. Zeit für einen Plan B.";
+            svgCircle.style.stroke = "var(--red, #ef4444)";
+          } else if(finalScore < 75) {
+            text = "Du hast bereits gute Ansätze, aber bist noch angreifbar. Lass uns deine Strukturen krisensicher machen.";
+            svgCircle.style.stroke = "var(--gold, #f59e0b)";
+          } else {
+            text = "Exzellent! Du lebst bereits weitgehend souverän. Unsere Netzwerke können dir helfen, dieses Level zu sichern.";
+            svgCircle.style.stroke = "var(--green, #10b981)";
+          }
+          document.getElementById('qc-score-text').textContent = text;
+        }
+      });
+    });
+  </script>
 
   <!-- Meta-Admin SDK -->
   <script src="meta-admin-sdk.js"></script>
